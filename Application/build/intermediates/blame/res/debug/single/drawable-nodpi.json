@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "C:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\build\\intermediates\\res\\merged\\debug\\drawable-nodpi\\favorite_on.png",
+        "source": "C:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\src\\main\\res\\drawable-nodpi\\favorite_on.png"
+    },
+    {
+        "merged": "C:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\build\\intermediates\\res\\merged\\debug\\drawable-nodpi\\favorite_off.png",
+        "source": "C:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\src\\main\\res\\drawable-nodpi\\favorite_off.png"
+    }
+]
