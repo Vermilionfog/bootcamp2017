@@ -3,129 +3,129 @@
 
     <item
         is-multidex="true"
-        jar="C:\Users\Yoshiki\.android\build-cache\799b1c281e12cb79cc0aa0a8118faebdb3b7c452\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="45f697922e6f072daa12f8a2995dc77ab03c11da">
-        <dex dex="C:\Users\Yoshiki\AndroidStudioProjects\android-Camera2Basic\Application\build\intermediates\transforms\dex\debug\folders\1000\10\classes_c13642511cd1e0db2640e63eec97f77965a16a00\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Yoshiki\.android\build-cache\7dc86bcdc10249a347f032a3a8eb093b705c60a8\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="914f5d3e3ace66080e59613708f06d129a222e25">
-        <dex dex="C:\Users\Yoshiki\AndroidStudioProjects\android-Camera2Basic\Application\build\intermediates\transforms\dex\debug\folders\1000\10\classes_350432a41abf8fc0004b604b9cc432c3f1513caa\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Yoshiki\.android\build-cache\4f07099f8882c958af93d183a6f8c6065c234e54\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="da27a32db6af8954ee8061537c7d476fcb1df46f">
-        <dex dex="C:\Users\Yoshiki\AndroidStudioProjects\android-Camera2Basic\Application\build\intermediates\transforms\dex\debug\folders\1000\10\classes_f2c9984e57973ccd15bedf96ab094895c928481c\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Yoshiki\.android\build-cache\00ed9acc50596245aee4ffda6d17cde2a27cc281\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="4a26a1154d053ab11aaf4c3967c42a4d66390991">
-        <dex dex="C:\Users\Yoshiki\AndroidStudioProjects\android-Camera2Basic\Application\build\intermediates\transforms\dex\debug\folders\1000\10\classes_15382410a033525ca7cf39f13e673a10992d2e98\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Yoshiki\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\25.3.1\support-annotations-25.3.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="bf8841d29fa39e077730e7a91222c2ce269fa7c9">
-        <dex dex="C:\Users\Yoshiki\AndroidStudioProjects\android-Camera2Basic\Application\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-25.3.1_9a9f3795e84da367c8adca4cd88454cbcd91ba1b\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Yoshiki\.android\build-cache\b5500c90d5f9f2d3a6d12c1bb2021c9a2ca42a5c\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="150252b33b00274cc868578ade018fda0d43a3eb">
-        <dex dex="C:\Users\Yoshiki\AndroidStudioProjects\android-Camera2Basic\Application\build\intermediates\transforms\dex\debug\folders\1000\10\classes_f4930fcee46b03e7473cabe9d658af1e0da0671d\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Yoshiki\.android\build-cache\a5773dd50a06f76d8109aba43238da47e9964a9e\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="C:\Users\Yoshiki\AndroidStudioProjects\android-Camera2Basic\Application\build\intermediates\transforms\dex\debug\folders\1000\10\classes_eaf0c3ccc38c1d0a004d0fc90083a8308c339611\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Yoshiki\.android\build-cache\86fa0e260064af9a6b6ac76d6eb0cc9124e18654\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="efb8cb62d47d157c29d1521daac7eefd4cb881ee">
-        <dex dex="C:\Users\Yoshiki\AndroidStudioProjects\android-Camera2Basic\Application\build\intermediates\transforms\dex\debug\folders\1000\10\classes_20ba3994781f3ab0649e6555bd879631783e2117\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Yoshiki\.android\build-cache\ac247077f9946172c7460437a2e1ba5e8fa2ab27\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="47635644d0d5c103c1dd8360549eb9ba3225c7d3">
-        <dex dex="C:\Users\Yoshiki\AndroidStudioProjects\android-Camera2Basic\Application\build\intermediates\transforms\dex\debug\folders\1000\10\classes_ad008343405e01c1a328d99b565543efd672e16b\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Yoshiki\.android\build-cache\6bb6d0923d168972f963c4e482888286c434bdf2\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="8531f2d46b35de75e6130f25830e0c2c0d6bb98c">
-        <dex dex="C:\Users\Yoshiki\AndroidStudioProjects\android-Camera2Basic\Application\build\intermediates\transforms\dex\debug\folders\1000\10\classes_6a1cc9aa41867b2d86f8196b6d077c82a76890ef\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Yoshiki\AndroidStudioProjects\android-Camera2Basic\Application\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="d9ad6cb22620022ae042864a2fc151473317e192">
-        <dex dex="C:\Users\Yoshiki\AndroidStudioProjects\android-Camera2Basic\Application\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_cae0ef393985c863f7987449306fe24734abc936\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Yoshiki\.android\build-cache\d6f1c351661ec154a90f4addf2d79e906db56fea\output\jars\classes.jar"
+        jar="/Users/usr0301385/.android/build-cache/7fb03762c37068f2dd7b38e7e1f30e4b899bea74/output/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.3"
         sha1="052f5f840f21174a3ecf6544130194e2652cbb73">
-        <dex dex="C:\Users\Yoshiki\AndroidStudioProjects\android-Camera2Basic\Application\build\intermediates\transforms\dex\debug\folders\1000\10\classes_97b3ae71835575d7a6bda5a9fd0834962feaeff0\classes.dex" />
+        <dex dex="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/transforms/dex/debug/folders/1000/10/classes_fe5657c48fade045581c9421fc2776cc58789401/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Yoshiki\AndroidStudioProjects\android-Camera2Basic\Application\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
-        <dex dex="C:\Users\Yoshiki\AndroidStudioProjects\android-Camera2Basic\Application\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_134b5349ea7afff39e1ff3179bc9235428ffc0c3\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Yoshiki\.android\build-cache\0ee816632ae9cb197e6a7688d8e1d6ca7aa9be31\output\jars\classes.jar"
+        jar="/Users/usr0301385/.android/build-cache/1d0c1bb82b3bf6269663b5da23b267f235aeb585/output/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.3"
         sha1="6ef31f1555bb4cc513ec8d52711365a8b89f3600">
-        <dex dex="C:\Users\Yoshiki\AndroidStudioProjects\android-Camera2Basic\Application\build\intermediates\transforms\dex\debug\folders\1000\10\classes_07f6c81e3b6a19754a22f1915cc6566b07f96ea2\classes.dex" />
+        <dex dex="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/transforms/dex/debug/folders/1000/10/classes_bce00d49f42b2448dcdfa39a3364e61cfc97581d/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/usr0301385/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/25.3.1/support-annotations-25.3.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="bf8841d29fa39e077730e7a91222c2ce269fa7c9">
+        <dex dex="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-25.3.1_99fef47e0083aee71d1b8b9fc194e8d3de6b6e1d/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/usr0301385/.android/build-cache/033fbf8f94bb587e8f25a183938e65bd63034cfe/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="45f697922e6f072daa12f8a2995dc77ab03c11da">
+        <dex dex="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/transforms/dex/debug/folders/1000/10/classes_0b40156d07e198f05af4cc8cf1bf69c8a28d8e7e/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/usr0301385/.android/build-cache/3e5b7ada027110cedd508b9631d06e98d4bbb63c/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="da27a32db6af8954ee8061537c7d476fcb1df46f">
+        <dex dex="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/transforms/dex/debug/folders/1000/10/classes_f2916330cc70a70478422b6a255469e46b5408b8/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/usr0301385/.android/build-cache/245165ab0de910be96470bbff88574486cf076c9/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="4a26a1154d053ab11aaf4c3967c42a4d66390991">
+        <dex dex="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/transforms/dex/debug/folders/1000/10/classes_6db887ec46d8acfed5e3abfcde8c5b27d0584fb7/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/usr0301385/.android/build-cache/575730fce1429917e1a3380e5eb374204eba2d9d/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="914f5d3e3ace66080e59613708f06d129a222e25">
+        <dex dex="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/transforms/dex/debug/folders/1000/10/classes_a58fa69eb6e9d08306c50c3968a2c32dd6ed413b/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/usr0301385/.android/build-cache/b893e86d8b64d34d0749c72edd7d918cfc34f231/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/transforms/dex/debug/folders/1000/10/classes_42eb4c9814d7491e2822e9f167f5bbaed0a2d7de/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/usr0301385/.android/build-cache/3c13e857920ee84073a9979ef030568917043780/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="150252b33b00274cc868578ade018fda0d43a3eb">
+        <dex dex="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/transforms/dex/debug/folders/1000/10/classes_79d70dd461d47b7bfda74830e15127ed9ed10806/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/usr0301385/.android/build-cache/000c36053b7c4ea484042065799508b2bfa83489/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="8531f2d46b35de75e6130f25830e0c2c0d6bb98c">
+        <dex dex="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/transforms/dex/debug/folders/1000/10/classes_6899008a9341d06ad6a430d8f29c1871e8149610/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/usr0301385/.android/build-cache/ef64db852e86a9a6bd691d579e91ce6f05d5287f/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="efb8cb62d47d157c29d1521daac7eefd4cb881ee">
+        <dex dex="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/transforms/dex/debug/folders/1000/10/classes_29f0aadfeb2aefb4baa836f94cc650e6f753fff8/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/usr0301385/.android/build-cache/7aa6623a934633b648caf06c400804c8bfb6d2ce/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="47635644d0d5c103c1dd8360549eb9ba3225c7d3">
+        <dex dex="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/transforms/dex/debug/folders/1000/10/classes_b6a3d458c790a21df432ab0bb20fdf53a19744d3/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_7f0ddcabc6662f09523056e396be90b13a1b4bc8/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="5c18096861ab72a4cf436a2827ecc65a6db6f81b">
+        <dex dex="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_481c86fd848e7ceb5e6c3cf3103c6a9af611c69a/classes.dex" />
     </item>
 
 </items>

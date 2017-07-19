@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Application/Application.iml" filepath="$PROJECT_DIR$/Application/Application.iml" />
-      <module fileurl="file://$PROJECT_DIR$/android-Camera2Basic.iml" filepath="$PROJECT_DIR$/android-Camera2Basic.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bootcamp2017.iml" filepath="$PROJECT_DIR$/bootcamp2017.iml" />
     </modules>
   </component>
 </project>

@@ -1,10 +1,18 @@
 [
     {
-        "merged": "C:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\build\\intermediates\\res\\merged\\debug\\color-v11\\abc_background_cache_hint_selector_material_dark.xml",
-        "source": "C:\\Users\\Yoshiki\\.android\\build-cache\\b5500c90d5f9f2d3a6d12c1bb2021c9a2ca42a5c\\output\\res\\color-v11\\abc_background_cache_hint_selector_material_dark.xml"
+        "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\build\\intermediates\\res\\merged\\debug\\color-v11\\abc_background_cache_hint_selector_material_dark.xml",
+        "source": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\Yoshiki\\.android\\build-cache\\b5500c90d5f9f2d3a6d12c1bb2021c9a2ca42a5c\\output\\res\\color-v11\\abc_background_cache_hint_selector_material_dark.xml"
     },
     {
-        "merged": "C:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\build\\intermediates\\res\\merged\\debug\\color-v11\\abc_background_cache_hint_selector_material_light.xml",
-        "source": "C:\\Users\\Yoshiki\\.android\\build-cache\\b5500c90d5f9f2d3a6d12c1bb2021c9a2ca42a5c\\output\\res\\color-v11\\abc_background_cache_hint_selector_material_light.xml"
+        "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\build\\intermediates\\res\\merged\\debug\\color-v11\\abc_background_cache_hint_selector_material_light.xml",
+        "source": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\Yoshiki\\.android\\build-cache\\b5500c90d5f9f2d3a6d12c1bb2021c9a2ca42a5c\\output\\res\\color-v11\\abc_background_cache_hint_selector_material_light.xml"
+    },
+    {
+        "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/res/merged/debug/color-v11/abc_background_cache_hint_selector_material_light.xml",
+        "source": "/Users/usr0301385/.android/build-cache/3c13e857920ee84073a9979ef030568917043780/output/res/color-v11/abc_background_cache_hint_selector_material_light.xml"
+    },
+    {
+        "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/res/merged/debug/color-v11/abc_background_cache_hint_selector_material_dark.xml",
+        "source": "/Users/usr0301385/.android/build-cache/3c13e857920ee84073a9979ef030568917043780/output/res/color-v11/abc_background_cache_hint_selector_material_dark.xml"
     }
 ]

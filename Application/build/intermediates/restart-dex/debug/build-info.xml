@@ -1,87 +1,170 @@
 <?xml version="1.0" encoding="utf-8"?>
 <instant-run
     abi="x86"
-    api-level="25"
-    build-mode="COLD"
-    density="560dpi"
+    api-level="26"
+    build-mode="FULL"
+    density="420dpi"
     format="10"
     plugin-version="2.3.3"
-    timestamp="1500280878041"
+    timestamp="1500452939464"
     token="8586372849827842007"
-    verifier="COLD_SWAP_REQUESTED" >
+    verifier="FULL_BUILD_REQUESTED" >
 
     <task
         name="javac"
-        duration="339" />
+        duration="10117" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="49" />
+        duration="2207" />
     <task
         name="verifier"
-        duration="4" />
+        duration="382" />
 
     <artifact
-        location="C:\Users\Yoshiki\AndroidStudioProjects\android-Camera2Basic\Application\build\intermediates\split-apk\debug\slices\slice_3.apk"
+        location="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/split-apk/debug/dep/dependencies.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/split-apk/debug/slices/slice_0.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/split-apk/debug/slices/slice_1.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/split-apk/debug/slices/slice_2.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/split-apk/debug/slices/slice_5.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/split-apk/debug/slices/slice_3.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/split-apk/debug/slices/slice_4.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/split-apk/debug/slices/slice_6.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/split-apk/debug/slices/slice_7.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/split-apk/debug/slices/slice_8.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/split-apk/debug/slices/slice_9.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/outputs/apk/Application-debug.apk"
+        type="SPLIT_MAIN" />
+    <artifact
+        location="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\Users\Yoshiki\AndroidStudioProjects\android-Camera2Basic\Application\build\intermediates\split-apk\debug\slices\slice_7.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\Users\Yoshiki\AndroidStudioProjects\android-Camera2Basic\Application\build\intermediates\split-apk\debug\slices\slice_2.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\Users\Yoshiki\AndroidStudioProjects\android-Camera2Basic\Application\build\intermediates\split-apk\debug\slices\slice_0.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\Users\Yoshiki\AndroidStudioProjects\android-Camera2Basic\Application\build\intermediates\split-apk\debug\slices\slice_9.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\Users\Yoshiki\AndroidStudioProjects\android-Camera2Basic\Application\build\intermediates\split-apk\debug\slices\slice_3.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\Users\Yoshiki\AndroidStudioProjects\android-Camera2Basic\Application\build\intermediates\split-apk\debug\slices\slice_5.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\Users\Yoshiki\AndroidStudioProjects\android-Camera2Basic\Application\build\intermediates\split-apk\debug\slices\slice_1.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\Users\Yoshiki\AndroidStudioProjects\android-Camera2Basic\Application\build\intermediates\split-apk\debug\dep\dependencies.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\Users\Yoshiki\AndroidStudioProjects\android-Camera2Basic\Application\build\intermediates\split-apk\debug\slices\slice_4.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\Users\Yoshiki\AndroidStudioProjects\android-Camera2Basic\Application\build\intermediates\split-apk\debug\slices\slice_8.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\Users\Yoshiki\AndroidStudioProjects\android-Camera2Basic\Application\build\intermediates\split-apk\debug\slices\slice_6.apk"
         type="SPLIT" />
 
     <build
         build-mode="FULL"
-        timestamp="1500270088543"
+        timestamp="1500452939464"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
-            location="C:\Users\Yoshiki\AndroidStudioProjects\android-Camera2Basic\Application\build\intermediates\split-apk\debug\slices\slice_3.apk"
+            location="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/split-apk/debug/dep/dependencies.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\Yoshiki\AndroidStudioProjects\android-Camera2Basic\Application\build\intermediates\split-apk\debug\slices\slice_9.apk"
+            location="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/split-apk/debug/slices/slice_0.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\Yoshiki\AndroidStudioProjects\android-Camera2Basic\Application\build\intermediates\split-apk\debug\slices\slice_8.apk"
+            location="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/split-apk/debug/slices/slice_1.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\Yoshiki\AndroidStudioProjects\android-Camera2Basic\Application\build\intermediates\split-apk\debug\slices\slice_0.apk"
+            location="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/split-apk/debug/slices/slice_2.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\Yoshiki\AndroidStudioProjects\android-Camera2Basic\Application\build\intermediates\split-apk\debug\slices\slice_6.apk"
+            location="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/split-apk/debug/slices/slice_5.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\Yoshiki\AndroidStudioProjects\android-Camera2Basic\Application\build\intermediates\split-apk\debug\dep\dependencies.apk"
+            location="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/split-apk/debug/slices/slice_3.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\Yoshiki\AndroidStudioProjects\android-Camera2Basic\Application\build\intermediates\split-apk\debug\slices\slice_7.apk"
+            location="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/split-apk/debug/slices/slice_4.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\Yoshiki\AndroidStudioProjects\android-Camera2Basic\Application\build\intermediates\split-apk\debug\slices\slice_1.apk"
+            location="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/split-apk/debug/slices/slice_6.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\Yoshiki\AndroidStudioProjects\android-Camera2Basic\Application\build\intermediates\split-apk\debug\slices\slice_2.apk"
+            location="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/split-apk/debug/slices/slice_7.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\Yoshiki\AndroidStudioProjects\android-Camera2Basic\Application\build\intermediates\split-apk\debug\slices\slice_5.apk"
+            location="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/split-apk/debug/slices/slice_8.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\Yoshiki\AndroidStudioProjects\android-Camera2Basic\Application\build\intermediates\split-apk\debug\slices\slice_4.apk"
+            location="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/split-apk/debug/slices/slice_9.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\Yoshiki\AndroidStudioProjects\android-Camera2Basic\Application\build\outputs\apk\Application-debug.apk"
+            location="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/outputs/apk/Application-debug.apk"
             type="SPLIT_MAIN" />
-    </build>
-    <build
-        build-mode="COLD"
-        timestamp="1500270633669"
-        verifier="COLD_SWAP_REQUESTED" >
         <artifact
-            location="C:\Users\Yoshiki\AndroidStudioProjects\android-Camera2Basic\Application\build\outputs\apk\Application-debug.apk"
-            type="SPLIT_MAIN" />
-    </build>
-    <build
-        build-mode="COLD"
-        timestamp="1500280878041"
-        verifier="COLD_SWAP_REQUESTED" >
+            location="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\Users\Yoshiki\AndroidStudioProjects\android-Camera2Basic\Application\build\intermediates\split-apk\debug\slices\slice_7.apk"
+            type="SPLIT" />
         <artifact
-            location="C:\Users\Yoshiki\AndroidStudioProjects\android-Camera2Basic\Application\build\intermediates\split-apk\debug\slices\slice_3.apk"
+            location="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\Users\Yoshiki\AndroidStudioProjects\android-Camera2Basic\Application\build\intermediates\split-apk\debug\slices\slice_2.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\Users\Yoshiki\AndroidStudioProjects\android-Camera2Basic\Application\build\intermediates\split-apk\debug\slices\slice_0.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\Users\Yoshiki\AndroidStudioProjects\android-Camera2Basic\Application\build\intermediates\split-apk\debug\slices\slice_9.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\Users\Yoshiki\AndroidStudioProjects\android-Camera2Basic\Application\build\intermediates\split-apk\debug\slices\slice_3.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\Users\Yoshiki\AndroidStudioProjects\android-Camera2Basic\Application\build\intermediates\split-apk\debug\slices\slice_5.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\Users\Yoshiki\AndroidStudioProjects\android-Camera2Basic\Application\build\intermediates\split-apk\debug\slices\slice_1.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\Users\Yoshiki\AndroidStudioProjects\android-Camera2Basic\Application\build\intermediates\split-apk\debug\dep\dependencies.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\Users\Yoshiki\AndroidStudioProjects\android-Camera2Basic\Application\build\intermediates\split-apk\debug\slices\slice_4.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\Users\Yoshiki\AndroidStudioProjects\android-Camera2Basic\Application\build\intermediates\split-apk\debug\slices\slice_8.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\Users\Yoshiki\AndroidStudioProjects\android-Camera2Basic\Application\build\intermediates\split-apk\debug\slices\slice_6.apk"
             type="SPLIT" />
     </build>
 
