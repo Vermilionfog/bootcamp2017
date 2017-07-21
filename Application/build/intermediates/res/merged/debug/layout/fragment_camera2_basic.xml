@@ -170,48 +170,32 @@
 
             </LinearLayout>
 
-            <GridLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:columnCount="4">
-
-                <ImageButton
-                    android:id="@+id/linkToAmazon"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_column="1"
-                    android:layout_marginBottom="29dp"
-                    android:layout_marginStart="165dp"
-                    android:layout_row="0"
-                    android:background="@drawable/flame_style"
-                    android:elevation="0dp"
-                    android:fontFamily="casual"
-                    android:paddingBottom="8dp"
-                    android:paddingLeft="8dp"
-                    android:paddingRight="8dp"
-                    android:paddingTop="8dp"
-                    android:src="@drawable/amazon_logo"
-                    android:text="詳細はこちら"
-                    android:textSize="14sp"
-                    android:visibility="visible"
-                    tools:text="詳細はこちら" />
+                android:orientation="horizontal">
 
                 <ImageButton
                     android:id="@+id/favoriteButton"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:layout_alignParentEnd="true"
                     android:layout_below="@+id/reviews"
-                    android:layout_marginEnd="23dp"
-                    android:layout_marginTop="12dp"
                     android:background="@drawable/flame_style"
                     android:scaleType="fitXY"
-                    app:srcCompat="@drawable/favorite_off" />
+                    android:src="@drawable/amazon_icon"/>
 
-            </GridLayout>
-
+                <ImageButton
+                    android:id="@+id/linkToAmazon"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentStart="true"
+                    android:background="@drawable/flame_style"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/amazon_icon"
+                    />
+            </LinearLayout>
         </LinearLayout>
 
 

@@ -6,7 +6,7 @@
     density="560dpi"
     format="10"
     plugin-version="2.3.3"
-    timestamp="1500633165469"
+    timestamp="1500634880994"
     token="-4221425137296430092"
     verifier="COLD_SWAP_REQUESTED" >
 
@@ -22,6 +22,10 @@
     <task
         name="verifier"
         duration="0" />
+
+    <artifact
+        location="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/outputs/apk/Application-debug.apk"
+        type="SPLIT_MAIN" />
 
     <build
         build-mode="FULL"
@@ -66,18 +70,22 @@
     </build>
     <build
         build-mode="COLD"
-        timestamp="1500633029000"
+        timestamp="1500634719164"
         verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/split-apk/debug/slices/slice_4.apk"
+            type="SPLIT" />
         <artifact
             location="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/split-apk/debug/slices/slice_1.apk"
             type="SPLIT" />
+    </build>
+    <build
+        build-mode="COLD"
+        timestamp="1500634880994"
+        verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/outputs/apk/Application-debug.apk"
             type="SPLIT_MAIN" />
     </build>
-    <build
-        build-mode="COLD"
-        timestamp="1500633165469"
-        verifier="COLD_SWAP_REQUESTED" />
 
 </instant-run>
