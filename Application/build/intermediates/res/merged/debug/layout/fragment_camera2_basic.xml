@@ -23,9 +23,8 @@
         android:id="@+id/texture"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/control"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true" />
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
 
 
     <RelativeLayout
@@ -36,105 +35,186 @@
         android:layout_alignParentStart="true"
         android:visibility="visible">
 
-        <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="35dp"
-            android:layout_height="36dp"
-            android:layout_alignEnd="@+id/reviews"
-            android:layout_alignParentTop="true"
-            android:background="#00000000"
-            android:scaleType="fitXY"
-            app:srcCompat="@drawable/favorite_off" />
-
         <ImageView
             android:id="@+id/productImage"
             android:layout_width="150dp"
             android:layout_height="200dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
             android:background="@color/cardview_dark_background"
-            app:srcCompat="?android:attr/selectableItemBackground" />
+            app:srcCompat="?android:attr/selectableItemBackground"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true" />
 
-        <ImageView
-            android:id="@+id/background"
+        <LinearLayout
+            android:id="@+id/information"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/productImage"
-            android:background="@color/cardview_light_background"
-            app:srcCompat="@color/cardview_light_background" />
-
-        <Button
-            android:id="@+id/linkToAmazon"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_alignEnd="@+id/reviews"
-            android:layout_alignParentBottom="true"
-            android:layout_alignStart="@+id/reviews"
-            android:layout_marginBottom="11dp"
-            android:fontFamily="casual"
-            android:text="詳細はこちら"
-            android:textSize="14sp"
-            tools:text="詳細はこちら" />
-
-        <RelativeLayout
-            android:id="@+id/reviews"
-            android:layout_width="220dp"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/linkToAmazon"
-            android:layout_marginBottom="13dp"
+            android:background="#ffffff"
+            android:orientation="vertical"
             android:layout_toEndOf="@+id/productImage">
 
             <TextView
-                android:id="@+id/reviewView_1"
+                android:id="@+id/name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:fontFamily="casual"
-                android:text="テストの基本"
-                android:textColor="@android:color/black" />
+                android:layout_centerHorizontal="true"
+                android:text="商品のタイトルです、この部分がスクロールされます"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:typeface="normal"
+                android:visibility="visible"
+                tools:text="商品のタイトルです" />
 
-            <TextView
-                android:id="@+id/reviewView_2"
+            <LinearLayout
+                android:id="@+id/linearLayout"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="25dp"
                 android:layout_alignParentEnd="true"
-                android:layout_alignStart="@+id/reviewView_1"
-                android:layout_below="@+id/reviewView_1"
-                android:fontFamily="casual"
-                android:text="簡潔で明瞭"
-                android:textColor="@android:color/black" />
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/name"
+                android:orientation="horizontal"
+                android:paddingTop="10px">
 
-            <TextView
-                android:id="@+id/reviewView_3"
-                android:layout_width="wrap_content"
+                <RatingBar
+                    android:id="@+id/ratingBar"
+                    style="@android:style/Widget.DeviceDefault.RatingBar.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignTop="@+id/price"
+                    android:maxHeight="36dp"
+                    android:minHeight="36dp"
+                    android:rating="5" />
+
+                <TextView
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center"
+                    android:layout_weight="1"
+                    android:gravity="center" />
+
+                <TextView
+                    android:id="@+id/price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="11dp"
+                    android:text="TextView"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Button"
+                    android:textSize="16sp"
+                    tools:text="¥7777" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/reviews"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/reviewView_2"
-                android:fontFamily="casual"
-                android:text="reviewView_1"
-                android:textColor="@android:color/black"
-                tools:text="一部主観が強い文面が見られ..." />
-        </RelativeLayout>
+                android:orientation="vertical"
+                android:layout_below="@+id/relativeLayout">
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/reviewView_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:fontFamily="casual"
+                        android:text="テストの基本"
+                        android:textAlignment="viewStart"
+                        android:textColor="@android:color/black" />
+
+                </HorizontalScrollView>
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/reviewView_2"
+                        android:layout_width="202dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_below="@+id/reviewView_1"
+                        android:fontFamily="casual"
+                        android:text="簡潔で明瞭"
+                        android:textAlignment="viewStart"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textColor="@android:color/black" />
+                </HorizontalScrollView>
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/reviewView_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_below="@+id/reviewView_2"
+                        android:fontFamily="casual"
+                        android:text="reviewView_1"
+                        android:textAlignment="viewStart"
+                        android:textColor="@android:color/black"
+                        tools:text="一部主観が強い文面が見られ..." />
+                </HorizontalScrollView>
+
+
+            </LinearLayout>
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:columnCount="4">
+
+                <ImageButton
+                    android:id="@+id/linkToAmazon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_column="1"
+                    android:layout_marginBottom="29dp"
+                    android:layout_marginStart="165dp"
+                    android:layout_row="0"
+                    android:background="@drawable/flame_style"
+                    android:elevation="0dp"
+                    android:fontFamily="casual"
+                    android:paddingBottom="8dp"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:paddingTop="8dp"
+                    android:src="@drawable/amazon_logo"
+                    android:text="詳細はこちら"
+                    android:textSize="14sp"
+                    android:visibility="visible"
+                    tools:text="詳細はこちら" />
+
+                <ImageButton
+                    android:id="@+id/favoriteButton"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_below="@+id/reviews"
+                    android:layout_marginEnd="23dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/flame_style"
+                    android:scaleType="fitXY"
+                    app:srcCompat="@drawable/favorite_off" />
+
+            </GridLayout>
+
+        </LinearLayout>
+
+
     </RelativeLayout>
-
-    <TextView
-        android:id="@+id/test"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
-
-    <RatingBar
-        android:id="@+id/ratingBar"
-        style="@android:style/Widget.DeviceDefault.RatingBar.Indicator"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@+id/texture"
-        android:layout_marginEnd="55dp"
-        android:maxHeight="36dp"
-        android:minHeight="36dp"
-        android:rating="5" />
 
 </RelativeLayout>

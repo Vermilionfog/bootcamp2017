@@ -1,83 +1,15 @@
 [
     {
-        "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\build\\intermediates\\res\\merged\\debug\\color\\abc_btn_colored_borderless_text_material.xml",
-        "source": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\Yoshiki\\.android\\build-cache\\b5500c90d5f9f2d3a6d12c1bb2021c9a2ca42a5c\\output\\res\\color\\abc_btn_colored_borderless_text_material.xml"
-    },
-    {
-        "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\build\\intermediates\\res\\merged\\debug\\color\\abc_secondary_text_material_dark.xml",
-        "source": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\Yoshiki\\.android\\build-cache\\b5500c90d5f9f2d3a6d12c1bb2021c9a2ca42a5c\\output\\res\\color\\abc_secondary_text_material_dark.xml"
-    },
-    {
         "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/res/merged/debug/color/abc_hint_foreground_material_dark.xml",
         "source": "/Users/usr0301385/.android/build-cache/3c13e857920ee84073a9979ef030568917043780/output/res/color/abc_hint_foreground_material_dark.xml"
     },
     {
-        "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/res/merged/debug/color/abc_btn_colored_text_material.xml",
-        "source": "/Users/usr0301385/.android/build-cache/3c13e857920ee84073a9979ef030568917043780/output/res/color/abc_btn_colored_text_material.xml"
-    },
-    {
-        "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_material_light.xml",
-        "source": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\Yoshiki\\.android\\build-cache\\b5500c90d5f9f2d3a6d12c1bb2021c9a2ca42a5c\\output\\res\\color\\abc_primary_text_material_light.xml"
-    },
-    {
-        "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/res/merged/debug/color/abc_tint_switch_thumb.xml",
-        "source": "/Users/usr0301385/.android/build-cache/3c13e857920ee84073a9979ef030568917043780/output/res/color/abc_tint_switch_thumb.xml"
-    },
-    {
-        "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_disable_only_material_light.xml",
-        "source": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\Yoshiki\\.android\\build-cache\\b5500c90d5f9f2d3a6d12c1bb2021c9a2ca42a5c\\output\\res\\color\\abc_primary_text_disable_only_material_light.xml"
-    },
-    {
-        "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/res/merged/debug/color/abc_primary_text_material_dark.xml",
-        "source": "/Users/usr0301385/.android/build-cache/3c13e857920ee84073a9979ef030568917043780/output/res/color/abc_primary_text_material_dark.xml"
-    },
-    {
-        "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/res/merged/debug/color/abc_tint_spinner.xml",
-        "source": "/Users/usr0301385/.android/build-cache/3c13e857920ee84073a9979ef030568917043780/output/res/color/abc_tint_spinner.xml"
-    },
-    {
-        "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\build\\intermediates\\res\\merged\\debug\\color\\abc_hint_foreground_material_dark.xml",
-        "source": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\Yoshiki\\.android\\build-cache\\b5500c90d5f9f2d3a6d12c1bb2021c9a2ca42a5c\\output\\res\\color\\abc_hint_foreground_material_dark.xml"
-    },
-    {
-        "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\build\\intermediates\\res\\merged\\debug\\color\\abc_search_url_text.xml",
-        "source": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\Yoshiki\\.android\\build-cache\\b5500c90d5f9f2d3a6d12c1bb2021c9a2ca42a5c\\output\\res\\color\\abc_search_url_text.xml"
-    },
-    {
-        "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_seek_thumb.xml",
-        "source": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\Yoshiki\\.android\\build-cache\\b5500c90d5f9f2d3a6d12c1bb2021c9a2ca42a5c\\output\\res\\color\\abc_tint_seek_thumb.xml"
-    },
-    {
-        "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\build\\intermediates\\res\\merged\\debug\\color\\switch_thumb_material_light.xml",
-        "source": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\Yoshiki\\.android\\build-cache\\b5500c90d5f9f2d3a6d12c1bb2021c9a2ca42a5c\\output\\res\\color\\switch_thumb_material_light.xml"
-    },
-    {
-        "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/res/merged/debug/color/abc_secondary_text_material_dark.xml",
-        "source": "/Users/usr0301385/.android/build-cache/3c13e857920ee84073a9979ef030568917043780/output/res/color/abc_secondary_text_material_dark.xml"
-    },
-    {
-        "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/res/merged/debug/color/abc_tint_btn_checkable.xml",
-        "source": "/Users/usr0301385/.android/build-cache/3c13e857920ee84073a9979ef030568917043780/output/res/color/abc_tint_btn_checkable.xml"
-    },
-    {
-        "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/res/merged/debug/color/abc_primary_text_disable_only_material_dark.xml",
-        "source": "/Users/usr0301385/.android/build-cache/3c13e857920ee84073a9979ef030568917043780/output/res/color/abc_primary_text_disable_only_material_dark.xml"
-    },
-    {
-        "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\build\\intermediates\\res\\merged\\debug\\color\\abc_secondary_text_material_light.xml",
-        "source": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\Yoshiki\\.android\\build-cache\\b5500c90d5f9f2d3a6d12c1bb2021c9a2ca42a5c\\output\\res\\color\\abc_secondary_text_material_light.xml"
-    },
-    {
-        "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_switch_track.xml",
-        "source": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\Yoshiki\\.android\\build-cache\\b5500c90d5f9f2d3a6d12c1bb2021c9a2ca42a5c\\output\\res\\color\\abc_tint_switch_track.xml"
-    },
-    {
-        "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_edittext.xml",
-        "source": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\Yoshiki\\.android\\build-cache\\b5500c90d5f9f2d3a6d12c1bb2021c9a2ca42a5c\\output\\res\\color\\abc_tint_edittext.xml"
-    },
-    {
         "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/res/merged/debug/color/abc_tint_edittext.xml",
         "source": "/Users/usr0301385/.android/build-cache/3c13e857920ee84073a9979ef030568917043780/output/res/color/abc_tint_edittext.xml"
+    },
+    {
+        "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/res/merged/debug/color/abc_btn_colored_text_material.xml",
+        "source": "/Users/usr0301385/.android/build-cache/3c13e857920ee84073a9979ef030568917043780/output/res/color/abc_btn_colored_text_material.xml"
     },
     {
         "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/res/merged/debug/color/abc_btn_colored_borderless_text_material.xml",
@@ -88,16 +20,20 @@
         "source": "/Users/usr0301385/.android/build-cache/3c13e857920ee84073a9979ef030568917043780/output/res/color/switch_thumb_material_light.xml"
     },
     {
-        "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_btn_checkable.xml",
-        "source": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\Yoshiki\\.android\\build-cache\\b5500c90d5f9f2d3a6d12c1bb2021c9a2ca42a5c\\output\\res\\color\\abc_tint_btn_checkable.xml"
+        "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/res/merged/debug/color/abc_tint_switch_thumb.xml",
+        "source": "/Users/usr0301385/.android/build-cache/3c13e857920ee84073a9979ef030568917043780/output/res/color/abc_tint_switch_thumb.xml"
     },
     {
-        "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_spinner.xml",
-        "source": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\Yoshiki\\.android\\build-cache\\b5500c90d5f9f2d3a6d12c1bb2021c9a2ca42a5c\\output\\res\\color\\abc_tint_spinner.xml"
+        "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/res/merged/debug/color/abc_primary_text_material_dark.xml",
+        "source": "/Users/usr0301385/.android/build-cache/3c13e857920ee84073a9979ef030568917043780/output/res/color/abc_primary_text_material_dark.xml"
     },
     {
-        "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_material_dark.xml",
-        "source": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\Yoshiki\\.android\\build-cache\\b5500c90d5f9f2d3a6d12c1bb2021c9a2ca42a5c\\output\\res\\color\\abc_primary_text_material_dark.xml"
+        "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/res/merged/debug/color/abc_tint_spinner.xml",
+        "source": "/Users/usr0301385/.android/build-cache/3c13e857920ee84073a9979ef030568917043780/output/res/color/abc_tint_spinner.xml"
+    },
+    {
+        "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/res/merged/debug/color/abc_secondary_text_material_dark.xml",
+        "source": "/Users/usr0301385/.android/build-cache/3c13e857920ee84073a9979ef030568917043780/output/res/color/abc_secondary_text_material_dark.xml"
     },
     {
         "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/res/merged/debug/color/abc_tint_default.xml",
@@ -108,16 +44,12 @@
         "source": "/Users/usr0301385/.android/build-cache/3c13e857920ee84073a9979ef030568917043780/output/res/color/abc_secondary_text_material_light.xml"
     },
     {
-        "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\build\\intermediates\\res\\merged\\debug\\color\\abc_hint_foreground_material_light.xml",
-        "source": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\Yoshiki\\.android\\build-cache\\b5500c90d5f9f2d3a6d12c1bb2021c9a2ca42a5c\\output\\res\\color\\abc_hint_foreground_material_light.xml"
+        "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/res/merged/debug/color/abc_tint_btn_checkable.xml",
+        "source": "/Users/usr0301385/.android/build-cache/3c13e857920ee84073a9979ef030568917043780/output/res/color/abc_tint_btn_checkable.xml"
     },
     {
-        "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_default.xml",
-        "source": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\Yoshiki\\.android\\build-cache\\b5500c90d5f9f2d3a6d12c1bb2021c9a2ca42a5c\\output\\res\\color\\abc_tint_default.xml"
-    },
-    {
-        "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_switch_thumb.xml",
-        "source": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\Yoshiki\\.android\\build-cache\\b5500c90d5f9f2d3a6d12c1bb2021c9a2ca42a5c\\output\\res\\color\\abc_tint_switch_thumb.xml"
+        "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/res/merged/debug/color/abc_primary_text_disable_only_material_dark.xml",
+        "source": "/Users/usr0301385/.android/build-cache/3c13e857920ee84073a9979ef030568917043780/output/res/color/abc_primary_text_disable_only_material_dark.xml"
     },
     {
         "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/res/merged/debug/color/abc_tint_switch_track.xml",
@@ -132,10 +64,6 @@
         "source": "/Users/usr0301385/.android/build-cache/3c13e857920ee84073a9979ef030568917043780/output/res/color/abc_hint_foreground_material_light.xml"
     },
     {
-        "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\build\\intermediates\\res\\merged\\debug\\color\\abc_btn_colored_text_material.xml",
-        "source": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\Yoshiki\\.android\\build-cache\\b5500c90d5f9f2d3a6d12c1bb2021c9a2ca42a5c\\output\\res\\color\\abc_btn_colored_text_material.xml"
-    },
-    {
         "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/res/merged/debug/color/abc_primary_text_material_light.xml",
         "source": "/Users/usr0301385/.android/build-cache/3c13e857920ee84073a9979ef030568917043780/output/res/color/abc_primary_text_material_light.xml"
     },
@@ -148,15 +76,7 @@
         "source": "/Users/usr0301385/.android/build-cache/3c13e857920ee84073a9979ef030568917043780/output/res/color/switch_thumb_material_dark.xml"
     },
     {
-        "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\build\\intermediates\\res\\merged\\debug\\color\\switch_thumb_material_dark.xml",
-        "source": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\Yoshiki\\.android\\build-cache\\b5500c90d5f9f2d3a6d12c1bb2021c9a2ca42a5c\\output\\res\\color\\switch_thumb_material_dark.xml"
-    },
-    {
         "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/res/merged/debug/color/abc_search_url_text.xml",
         "source": "/Users/usr0301385/.android/build-cache/3c13e857920ee84073a9979ef030568917043780/output/res/color/abc_search_url_text.xml"
-    },
-    {
-        "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_disable_only_material_dark.xml",
-        "source": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\Yoshiki\\.android\\build-cache\\b5500c90d5f9f2d3a6d12c1bb2021c9a2ca42a5c\\output\\res\\color\\abc_primary_text_disable_only_material_dark.xml"
     }
 ]
