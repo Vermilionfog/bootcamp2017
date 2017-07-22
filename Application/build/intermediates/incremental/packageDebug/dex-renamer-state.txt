@@ -1,7 +1,7 @@
-#Mon Jul 17 14:50:36 JST 2017
-base.0=C\:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_cae0ef393985c863f7987449306fe24734abc936
+#Fri Jul 21 20:01:22 JST 2017
+base.0=/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_481c86fd848e7ceb5e6c3cf3103c6a9af611c69a
 renamed.1=classes.dex
 renamed.0=classes2.dex
-file.1=C\:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_134b5349ea7afff39e1ff3179bc9235428ffc0c3\\classes.dex
-base.1=C\:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_134b5349ea7afff39e1ff3179bc9235428ffc0c3
-file.0=C\:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_cae0ef393985c863f7987449306fe24734abc936\\classes.dex
+file.1=/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_7f0ddcabc6662f09523056e396be90b13a1b4bc8/classes.dex
+base.1=/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_7f0ddcabc6662f09523056e396be90b13a1b4bc8
+file.0=/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_481c86fd848e7ceb5e6c3cf3103c6a9af611c69a/classes.dex

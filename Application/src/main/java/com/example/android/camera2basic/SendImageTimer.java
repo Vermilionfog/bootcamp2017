@@ -27,6 +27,8 @@ public class SendImageTimer extends TimerTask {
             public void run() {
                 ((CameraActivity)context).sendImage();
                 ((CameraActivity)context).setTestData();
+                ((CameraActivity)context).getObjects();
+                // TODO: ここで更新を掛けると値の更新とタイミングがずれたり、レビューの更新が遅れたりする。 Productのreviewをセットしたタイミングで呼び出すように変更したい
                 ((CameraActivity)context).setResult();
             }
         });

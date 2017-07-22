@@ -21,14 +21,19 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v13.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -48,6 +53,12 @@ public class CameraActivity extends Activity {
     public TextView review_3;
 
     public RatingBar rating;
+    public TextView price;
+    public TextView name;
+
+    public ImageButton amazonButton;
+
+    public Boolean initFlag = true; //ビューの初期化フラグ。 Flagmentが所有するViewを初期化するgetObjects()をタイマーで実行する際、このフラグがtrueであった時(一度目)のみ初期化する
 
     //public ImageView productImage;
 
@@ -55,35 +66,57 @@ public class CameraActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
+
         if (null == savedInstanceState) {
             getFragmentManager().beginTransaction()
                     .add(R.id.container, Camera2BasicFragment.newInstance())
                     .commit();
         }
-
-        setEventListnerToFavoriteButton();
+        timer = new Timer();
         fixMediaDir();
+//        getObjects();
+        displayProduct = new Product();
         sendImageTimer();
     }
 
 
-    // TextViewなどをIDから取得
+    // TextViewなどをIDから取得、恐らくFragmentが追加されて後に実行しないとエラーが発生する
     public void getObjects()
     {
-        review_1 = (TextView)findViewById(R.id.reviewView_1);
-        review_2 = (TextView)findViewById(R.id.reviewView_2);
-        review_3 = (TextView)findViewById(R.id.reviewView_3);
+        // かなり強引な分岐処理、正直良くない。 Flagmentの初期化が完了した後にコールバックする方法を見つけて解決するのが適切か
+        if(initFlag) {
+            // オブジェクトを取得し保存
+            review_1 = (TextView) findViewById(R.id.reviewView_1);
+            review_2 = (TextView) findViewById(R.id.reviewView_2);
+            review_3 = (TextView) findViewById(R.id.reviewView_3);
+            rating = (RatingBar) findViewById(R.id.ratingBar);
+            price = (TextView) findViewById(R.id.price);
+            name = (TextView) findViewById(R.id.name);
 
-        rating = (RatingBar)findViewById(R.id.ratingBar);
-        //productImage = (ImageView) findViewById(R.id.productImage);
+            amazonButton = (ImageButton) findViewById(R.id.linkToAmazon);
+
+            System.out.println(price.getClass());
+            System.out.println(name.getClass());
+
+            // 行数指定などの細かい設定
+            setTextViewOption(name, TextUtils.TruncateAt.MARQUEE);
+            setTextViewOption(review_1, TextUtils.TruncateAt.END);
+            setTextViewOption(review_2, TextUtils.TruncateAt.END);
+            setTextViewOption(review_3, TextUtils.TruncateAt.END);
+
+            // イベント設定、これらも本来はOnCreateでやる処理だが、そちらだとオブジェクトが取得出来ない為こちらで定義。
+            setEventListnerToFavoriteButton();
+            setEventListnerTolinkToAmazonButton();
+
+            initFlag = false;
+        }
     }
 
 
     // Timerを定義する。 実行内容はsendImageメソッド
     public void sendImageTimer(){
-        timer = new Timer();
         TimerTask timerTask = new SendImageTimer(this);
-        timer.scheduleAtFixedRate(timerTask, 0, 500);
+        timer.scheduleAtFixedRate(timerTask, 0, 5000);
     }
 
     //お気に入りボタンにイベントを追加設定する
@@ -94,13 +127,39 @@ public class CameraActivity extends Activity {
         // 後でお気に入り一覧を確認する為、DBに登録する。
     }
 
+    // 詳細ボタンを押した時の処理
+    public void setEventListnerTolinkToAmazonButton()
+    {
+        amazonButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                System.out.println("AmazonURL :" + displayProduct.amazonURL);
+                Uri uri = Uri.parse(displayProduct.amazonURL);
+                Intent i = new Intent(Intent.ACTION_VIEW,uri);
+                startActivity(i);
+            }
+        });
+    }
+
 
     // テスト用データを設定するメソッド
     public void setTestData()
     {
-        displayProduct = new Product("", 0, new Review[3], 0f, ""); //テスト用データを格納する為、nullで作成を行う
-        displayProduct.setDammyData();
+//        String test_xml = "<?xml version=\"1.0\" ?><ItemSearchResponse xmlns=\"http://webservices.amazon.com/AWSECommerceService/2013-08-01\"><OperationRequest><HTTPHeaders><Header Name=\"UserAgent\" Value=\"Python-urllib/3.5\"></Header></HTTPHeaders><RequestId>c174984d-8272-46db-80c9-55c094ec756b</RequestId><Arguments><Argument Name=\"AWSAccessKeyId\" Value=\"AKIAJPDXZXBB46X637HA\"></Argument><Argument Name=\"AssociateTag\" Value=\"iatlex-20\"></Argument><Argument Name=\"Keywords\" Value=\"python\"></Argument><Argument Name=\"Operation\" Value=\"ItemSearch\"></Argument><Argument Name=\"ResponseGroup\" Value=\"Medium,Reviews\"></Argument><Argument Name=\"SearchIndex\" Value=\"All\"></Argument><Argument Name=\"Service\" Value=\"AWSECommerceService\"></Argument><Argument Name=\"Timestamp\" Value=\"2017-07-20T14:50:20Z\"></Argument><Argument Name=\"Version\" Value=\"2013-08-01\"></Argument><Argument Name=\"Signature\" Value=\"MGxR0ULPgcBjqsc+HKE2kBFH2qq/GfjG3rtP4IgGKD4=\"></Argument></Arguments><RequestProcessingTime>0.1585142690000000</RequestProcessingTime></OperationRequest><Items><Request><IsValid>True</IsValid><ItemSearchRequest><Keywords>python</Keywords><ResponseGroup>Medium</ResponseGroup><ResponseGroup>Reviews</ResponseGroup><SearchIndex>All</SearchIndex></ItemSearchRequest></Request><TotalResults>25788</TotalResults><TotalPages>2579</TotalPages><MoreSearchResultsUrl>https://www.amazon.co.jp/gp/search?linkCode=xm2&amp;SubscriptionId=AKIAJPDXZXBB46X637HA&amp;keywords=python&amp;tag=iatlex-20&amp;creative=5143&amp;url=search-alias%3Daws-amazon-aps&amp;camp=2025</MoreSearchResultsUrl><Item><ASIN>487311778X</ASIN><DetailPageURL>https://www.amazon.co.jp/%E9%80%80%E5%B1%88%E3%81%AA%E3%81%93%E3%81%A8%E3%81%AFPython%E3%81%AB%E3%82%84%E3%82%89%E3%81%9B%E3%82%88%E3%81%86-%E2%80%95%E3%83%8E%E3%83%B3%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9E%E3%83%BC%E3%81%AB%E3%82%82%E3%81%A7%E3%81%8D%E3%82%8B%E8%87%AA%E5%8B%95%E5%8C%96%E5%87%A6%E7%90%86%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0-Al-Sweigart/dp/487311778X?SubscriptionId=AKIAJPDXZXBB46X637HA&amp;tag=iatlex-20&amp;linkCode=xm2&amp;camp=2025&amp;creative=165953&amp;creativeASIN=487311778X</DetailPageURL><ItemLinks><ItemLink><Description>Add To Wishlist</Description><URL>https://www.amazon.co.jp/gp/registry/wishlist/add-item.html?asin.0=487311778X&amp;SubscriptionId=AKIAJPDXZXBB46X637HA&amp;tag=iatlex-20&amp;linkCode=xm2&amp;camp=2025&amp;creative=5143&amp;creativeASIN=487311778X</URL></ItemLink><ItemLink><Description>Tell A Friend</Description><URL>https://www.amazon.co.jp/gp/pdp/taf/487311778X?SubscriptionId=AKIAJPDXZXBB46X637HA&amp;tag=iatlex-20&amp;linkCode=xm2&amp;camp=2025&amp;creative=5143&amp;creativeASIN=487311778X</URL></ItemLink><ItemLink><Description>All Customer Reviews</Description><URL>https://www.amazon.co.jp/review/product/487311778X?SubscriptionId=AKIAJPDXZXBB46X637HA&amp;tag=iatlex-20&amp;linkCode=xm2&amp;camp=2025&amp;creative=5143&amp;creativeASIN=487311778X</URL></ItemLink><ItemLink><Description>All Offers</Description><URL>https://www.amazon.co.jp/gp/offer-listing/487311778X?SubscriptionId=AKIAJPDXZXBB46X637HA&amp;tag=iatlex-20&amp;linkCode=xm2&amp;camp=2025&amp;creative=5143&amp;creativeASIN=487311778X</URL></ItemLink></ItemLinks><SalesRank>587</SalesRank><SmallImage><URL>https://images-fe.ssl-images-amazon.com/images/I/51hk%2B5bKNrL._SL75_.jpg</URL><Height Units=\"pixels\">75</Height><Width Units=\"pixels\">53</Width></SmallImage><MediumImage><URL>https://images-fe.ssl-images-amazon.com/images/I/51hk%2B5bKNrL._SL160_.jpg</URL><Height Units=\"pixels\">160</Height><Width Units=\"pixels\">113</Width></MediumImage><LargeImage><URL>https://images-fe.ssl-images-amazon.com/images/I/51hk%2B5bKNrL.jpg</URL><Height Units=\"pixels\">500</Height><Width Units=\"pixels\">354</Width></LargeImage><ImageSets><ImageSet Category=\"primary\"><SwatchImage><URL>https://images-fe.ssl-images-amazon.com/images/I/51hk%2B5bKNrL._SL30_.jpg</URL><Height Units=\"pixels\">30</Height><Width Units=\"pixels\">21</Width></SwatchImage><SmallImage><URL>https://images-fe.ssl-images-amazon.com/images/I/51hk%2B5bKNrL._SL75_.jpg</URL><Height Units=\"pixels\">75</Height><Width Units=\"pixels\">53</Width></SmallImage><ThumbnailImage><URL>https://images-fe.ssl-images-amazon.com/images/I/51hk%2B5bKNrL._SL75_.jpg</URL><Height Units=\"pixels\">75</Height><Width Units=\"pixels\">53</Width></ThumbnailImage><TinyImage><URL>https://images-fe.ssl-images-amazon.com/images/I/51hk%2B5bKNrL._SL110_.jpg</URL><Height Units=\"pixels\">110</Height><Width Units=\"pixels\">78</Width></TinyImage><MediumImage><URL>https://images-fe.ssl-images-amazon.com/images/I/51hk%2B5bKNrL._SL160_.jpg</URL><Height Units=\"pixels\">160</Height><Width Units=\"pixels\">113</Width></MediumImage><LargeImage><URL>https://images-fe.ssl-images-amazon.com/images/I/51hk%2B5bKNrL.jpg</URL><Height Units=\"pixels\">500</Height><Width Units=\"pixels\">354</Width></LargeImage><HiResImage><URL>https://images-fe.ssl-images-amazon.com/images/I/81i-G8YToFL.jpg</URL><Height Units=\"pixels\">2480</Height><Width Units=\"pixels\">1754</Width></HiResImage></ImageSet></ImageSets><ItemAttributes><Author>Al Sweigart</Author><Binding>単行本（ソフトカバー）</Binding><Creator Role=\"翻訳\">相川 愛三</Creator><EAN>9784873117782</EAN><EANList><EANListElement>9784873117782</EANListElement></EANList><IsAdultProduct>0</IsAdultProduct><ISBN>487311778X</ISBN><Label>オライリージャパン</Label><Languages><Language><Name>日本語</Name><Type>Published</Type></Language></Languages><Manufacturer>オライリージャパン</Manufacturer><NumberOfPages>616</NumberOfPages><PackageDimensions><Height Units=\"100分の1インチ\">134</Height><Length Units=\"100分の1インチ\">858</Length><Weight Units=\"100分の1ポンド\">168</Weight><Width Units=\"100分の1インチ\">591</Width></PackageDimensions><ProductGroup>Book</ProductGroup><ProductTypeName>ABIS_BOOK</ProductTypeName><PublicationDate>2017-06-03</PublicationDate><Publisher>オライリージャパン</Publisher><Studio>オライリージャパン</Studio><Title>退屈なことはPythonにやらせよう ―ノンプログラマーにもできる自動化処理プログラミング</Title></ItemAttributes><OfferSummary><LowestNewPrice><Amount>3996</Amount><CurrencyCode>JPY</CurrencyCode><FormattedPrice>￥ 3,996</FormattedPrice></LowestNewPrice><LowestUsedPrice><Amount>4395</Amount><CurrencyCode>JPY</CurrencyCode><FormattedPrice>￥ 4,395</FormattedPrice></LowestUsedPrice><TotalNew>6</TotalNew><TotalUsed>6</TotalUsed><TotalCollectible>0</TotalCollectible><TotalRefurbished>0</TotalRefurbished></OfferSummary><CustomerReviews><IFrameURL>https://www.amazon.jp/reviews/iframe?akid=AKIAJPDXZXBB46X637HA&amp;alinkCode=xm2&amp;asin=487311778X&amp;atag=iatlex-20&amp;exp=2017-07-21T05%3A50%3A20Z&amp;v=2&amp;sig=Nmf%252FvQq4smLhFB9dNaWVpeYm2BBHQmFmEQleMa9I4jY%253D</IFrameURL><HasReviews>true</HasReviews></CustomerReviews></Item></Items></ItemSearchResponse>";
+        String test_xml = "<?xml version=\"1.0\" ?><ItemSearchResponse xmlns=\"http://webservices.amazon.com/AWSECommerceService/2013-08-01\"><OperationRequest><HTTPHeaders><Header Name=\"UserAgent\" Value=\"Python-urllib/3.5\"></Header></HTTPHeaders><RequestId>0b98c2e3-5f79-4354-9a4f-6f87581f7553</RequestId><Arguments><Argument Name=\"AWSAccessKeyId\" Value=\"AKIAJPDXZXBB46X637HA\"></Argument><Argument Name=\"AssociateTag\" Value=\"iatlex-20\"></Argument><Argument Name=\"Keywords\" Value=\"python\"></Argument><Argument Name=\"Operation\" Value=\"ItemSearch\"></Argument><Argument Name=\"ResponseGroup\" Value=\"Medium,Reviews\"></Argument><Argument Name=\"SearchIndex\" Value=\"All\"></Argument><Argument Name=\"Service\" Value=\"AWSECommerceService\"></Argument><Argument Name=\"Timestamp\" Value=\"2017-07-21T12:31:35Z\"></Argument><Argument Name=\"Version\" Value=\"2013-08-01\"></Argument><Argument Name=\"Signature\" Value=\"CLXdgdBSLrGSqc0VDq9fCGRlRSzojfr0FT7cx07vHLg=\"></Argument></Arguments><RequestProcessingTime>0.1863752980000000</RequestProcessingTime></OperationRequest><Items><Request><IsValid>True</IsValid><ItemSearchRequest><Keywords>python</Keywords><ResponseGroup>Medium</ResponseGroup><ResponseGroup>Reviews</ResponseGroup><SearchIndex>All</SearchIndex></ItemSearchRequest></Request><TotalResults>25815</TotalResults><TotalPages>2582</TotalPages><MoreSearchResultsUrl>https://www.amazon.co.jp/gp/search?linkCode=xm2&amp;SubscriptionId=AKIAJPDXZXBB46X637HA&amp;keywords=python&amp;tag=iatlex-20&amp;creative=5143&amp;url=search-alias%3Daws-amazon-aps&amp;camp=2025</MoreSearchResultsUrl><Item><ASIN>487311778X</ASIN><DetailPageURL>https://www.amazon.co.jp/%E9%80%80%E5%B1%88%E3%81%AA%E3%81%93%E3%81%A8%E3%81%AFPython%E3%81%AB%E3%82%84%E3%82%89%E3%81%9B%E3%82%88%E3%81%86-%E2%80%95%E3%83%8E%E3%83%B3%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9E%E3%83%BC%E3%81%AB%E3%82%82%E3%81%A7%E3%81%8D%E3%82%8B%E8%87%AA%E5%8B%95%E5%8C%96%E5%87%A6%E7%90%86%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0-Al-Sweigart/dp/487311778X?SubscriptionId=AKIAJPDXZXBB46X637HA&amp;tag=iatlex-20&amp;linkCode=xm2&amp;camp=2025&amp;creative=165953&amp;creativeASIN=487311778X</DetailPageURL><ItemLinks><ItemLink><Description>Add To Wishlist</Description><URL>https://www.amazon.co.jp/gp/registry/wishlist/add-item.html?asin.0=487311778X&amp;SubscriptionId=AKIAJPDXZXBB46X637HA&amp;tag=iatlex-20&amp;linkCode=xm2&amp;camp=2025&amp;creative=5143&amp;creativeASIN=487311778X</URL></ItemLink><ItemLink><Description>Tell A Friend</Description><URL>https://www.amazon.co.jp/gp/pdp/taf/487311778X?SubscriptionId=AKIAJPDXZXBB46X637HA&amp;tag=iatlex-20&amp;linkCode=xm2&amp;camp=2025&amp;creative=5143&amp;creativeASIN=487311778X</URL></ItemLink><ItemLink><Description>All Customer Reviews</Description><URL>https://www.amazon.co.jp/review/product/487311778X?SubscriptionId=AKIAJPDXZXBB46X637HA&amp;tag=iatlex-20&amp;linkCode=xm2&amp;camp=2025&amp;creative=5143&amp;creativeASIN=487311778X</URL></ItemLink><ItemLink><Description>All Offers</Description><URL>https://www.amazon.co.jp/gp/offer-listing/487311778X?SubscriptionId=AKIAJPDXZXBB46X637HA&amp;tag=iatlex-20&amp;linkCode=xm2&amp;camp=2025&amp;creative=5143&amp;creativeASIN=487311778X</URL></ItemLink></ItemLinks><SalesRank>611</SalesRank><SmallImage><URL>https://images-fe.ssl-images-amazon.com/images/I/51hk%2B5bKNrL._SL75_.jpg</URL><Height Units=\"pixels\">75</Height><Width Units=\"pixels\">53</Width></SmallImage><MediumImage><URL>https://images-fe.ssl-images-amazon.com/images/I/51hk%2B5bKNrL._SL160_.jpg</URL><Height Units=\"pixels\">160</Height><Width Units=\"pixels\">113</Width></MediumImage><LargeImage><URL>https://images-fe.ssl-images-amazon.com/images/I/51hk%2B5bKNrL.jpg</URL><Height Units=\"pixels\">500</Height><Width Units=\"pixels\">354</Width></LargeImage><ImageSets><ImageSet Category=\"primary\"><SwatchImage><URL>https://images-fe.ssl-images-amazon.com/images/I/51hk%2B5bKNrL._SL30_.jpg</URL><Height Units=\"pixels\">30</Height><Width Units=\"pixels\">21</Width></SwatchImage><SmallImage><URL>https://images-fe.ssl-images-amazon.com/images/I/51hk%2B5bKNrL._SL75_.jpg</URL><Height Units=\"pixels\">75</Height><Width Units=\"pixels\">53</Width></SmallImage><ThumbnailImage><URL>https://images-fe.ssl-images-amazon.com/images/I/51hk%2B5bKNrL._SL75_.jpg</URL><Height Units=\"pixels\">75</Height><Width Units=\"pixels\">53</Width></ThumbnailImage><TinyImage><URL>https://images-fe.ssl-images-amazon.com/images/I/51hk%2B5bKNrL._SL110_.jpg</URL><Height Units=\"pixels\">110</Height><Width Units=\"pixels\">78</Width></TinyImage><MediumImage><URL>https://images-fe.ssl-images-amazon.com/images/I/51hk%2B5bKNrL._SL160_.jpg</URL><Height Units=\"pixels\">160</Height><Width Units=\"pixels\">113</Width></MediumImage><LargeImage><URL>https://images-fe.ssl-images-amazon.com/images/I/51hk%2B5bKNrL.jpg</URL><Height Units=\"pixels\">500</Height><Width Units=\"pixels\">354</Width></LargeImage><HiResImage><URL>https://images-fe.ssl-images-amazon.com/images/I/81i-G8YToFL.jpg</URL><Height Units=\"pixels\">2480</Height><Width Units=\"pixels\">1754</Width></HiResImage></ImageSet></ImageSets><ItemAttributes><Author>Al Sweigart</Author><Binding>単行本（ソフトカバー）</Binding><Creator Role=\"翻訳\">相川 愛三</Creator><EAN>9784873117782</EAN><EANList><EANListElement>9784873117782</EANListElement></EANList><IsAdultProduct>0</IsAdultProduct><ISBN>487311778X</ISBN><Label>オライリージャパン</Label><Languages><Language><Name>日本語</Name><Type>Published</Type></Language></Languages><Manufacturer>オライリージャパン</Manufacturer><NumberOfPages>616</NumberOfPages><PackageDimensions><Height Units=\"100分の1インチ\">134</Height><Length Units=\"100分の1インチ\">858</Length><Weight Units=\"100分の1ポンド\">168</Weight><Width Units=\"100分の1インチ\">591</Width></PackageDimensions><ProductGroup>Book</ProductGroup><ProductTypeName>ABIS_BOOK</ProductTypeName><PublicationDate>2017-06-03</PublicationDate><Publisher>オライリージャパン</Publisher><Studio>オライリージャパン</Studio><Title>退屈なことはPythonにやらせよう ―ノンプログラマーにもできる自動化処理プログラミング</Title></ItemAttributes><OfferSummary><LowestNewPrice><Amount>3996</Amount><CurrencyCode>JPY</CurrencyCode><FormattedPrice>￥ 3,996</FormattedPrice></LowestNewPrice><LowestUsedPrice><Amount>4395</Amount><CurrencyCode>JPY</CurrencyCode><FormattedPrice>￥ 4,395</FormattedPrice></LowestUsedPrice><TotalNew>6</TotalNew><TotalUsed>6</TotalUsed><TotalCollectible>0</TotalCollectible><TotalRefurbished>0</TotalRefurbished></OfferSummary><CustomerReviews><IFrameURL>https://www.amazon.jp/reviews/iframe?akid=AKIAJPDXZXBB46X637HA&amp;alinkCode=xm2&amp;asin=487311778X&amp;atag=iatlex-20&amp;exp=2017-07-22T03%3A31%3A34Z&amp;v=2&amp;sig=0hzO5lqEenBwCElNBrGMjh7mB3HuBXT2TbM0gkWP8N0%253D</IFrameURL><HasReviews>true</HasReviews></CustomerReviews></Item></Items></ItemSearchResponse>";
+//        displayProduct = new Product(); //テスト用データを格納する為、nullで作成を行う
+        displayProduct.getProductForXML(test_xml);
+//        displayProduct.setDammyData();
     }
+
+    // 引数で受け取ったテキストビューを一行表示にし、省略方法を指定する
+    public void setTextViewOption(TextView target, TextUtils.TruncateAt truncate)
+    {
+        target.setSingleLine();
+        target.setFocusableInTouchMode(true);
+        target.setEllipsize(truncate);
+    }
+
 
 
     // TextureViewに設定されている画像を引数として、APIに画像を送る関数を呼び出す
@@ -118,17 +177,31 @@ public class CameraActivity extends Activity {
 
     public void setResult()
     {
-        // 本来はonCreateで呼ぶべき処理なのだが、そちらで呼ぶとオブジェクトが取得出来ない。onCreate後に行われる処理で何か定義されているものがある可能性アリ。暫定的にタイマーで処理を行う此方に記述する。
-        getObjects();
+        // 以前確認していた商品と同一名でなければ、表示されるデータを更新する。
+        // この処理を挟まない場合
+        if(!name.getText().equals(displayProduct.name))
+        {
+            setImage();
 
-        setImage();
-        setReviews();
-        setRating();
+            setPrice();
+            setName();
+
+            resetButton();
+        }
+        // ReviewとRatingは非同期処理の関係で、データを取得出来るタイミングが僅かに異なる為別に分ける。
+        // 分けない場合、レビューは更新されていないが、名称は更新されているという状態になり
+        if(!review_1.getText().equals(displayProduct.reviews[0].title))
+        {
+            setRating();
+            setReviews();
+        }
+
     }
 
     public void setImage()
     {
         GetBitmap task = new GetBitmap(this);
+        System.out.println(displayProduct.imageURL);
         task.execute(displayProduct.imageURL);
     }
 
@@ -146,7 +219,25 @@ public class CameraActivity extends Activity {
 
     public void setPrice()
     {
+        price.setText("¥" + displayProduct.price);
+    }
 
+    public void setName() {
+        name.setText(displayProduct.name);
+    }
+
+    public void resetButton()
+    {
+        // URLが何も入っていない時、Amazonへのリンクを非アクティブにする
+        System.out.println(displayProduct.getClass());
+        System.out.println(displayProduct.amazonURL.getClass());
+        if(displayProduct.amazonURL.equals("")) {
+            amazonButton.setActivated(false);
+        }
+        else
+        {
+            amazonButton.setActivated(true);
+        }
     }
 
 
