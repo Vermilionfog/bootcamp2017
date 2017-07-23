@@ -163,15 +163,9 @@ public class Core_API extends AsyncTask<String, Void, String> {
     //==========Make Amazon Request======================================
     public static String AmazonAPI_Req(String Keywords){
         TreeMap<String,String> kwargs = new TreeMap<String,String>();
-        kwargs.put("Service", "AWSECommerceService");
-        kwargs.put("AssociateTag", "iatlex-20");
-        kwargs.put("AWSAccessKeyId", "AKIAJPDXZXBB46X637HA");
-        kwargs.put("Operation", "ItemSearch");
-//        kwargs.put("Keywords", "sennheiser HD800");
-        kwargs.put("Keywords", Keywords);
-        kwargs.put("SearchIndex", "All");
-        kwargs.put("ResponseGroup", "Medium,Reviews");
-        kwargs.put("Version", "2013-08-01");
+
+        //ここにアクセスキーやシークレットキーを入力するコードを追加して利用する。
+
         //add Timestamp
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'");
         kwargs.put("Timestamp", sdf.format(new Date()) );
