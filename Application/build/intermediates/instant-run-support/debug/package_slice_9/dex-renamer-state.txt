@@ -1,4 +1,4 @@
-#Fri Jul 21 11:20:25 JST 2017
-base.0=/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/transforms/dex/debug/folders/1000/5/slice_9
+#Sat Jul 22 15:35:18 JST 2017
+base.0=C\:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\5\\slice_9
 renamed.0=classes.dex
-file.0=/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/transforms/dex/debug/folders/1000/5/slice_9/classes.dex
+file.0=C\:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\5\\slice_9\\classes.dex

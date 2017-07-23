@@ -32,11 +32,17 @@ import android.provider.MediaStore;
 import android.support.v13.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
+import android.util.Base64;
+import android.view.TextureView;
 import android.view.View;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ImageButton;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -44,8 +50,12 @@ import java.util.TimerTask;
 public class CameraActivity extends Activity {
 
     // 表示するデータ
-    public Timer timer ;
+    public Timer sendImageTimer ;
+    public Timer displayReloadTimer;
     public Product displayProduct; //画面下部に表示する商品データ
+
+    //カメラの映像を表示するTextureView
+    public TextureView cameraView;
 
     // データを乗せるTextViewやRatingBarなど
     public TextView review_1;
@@ -56,9 +66,15 @@ public class CameraActivity extends Activity {
     public TextView price;
     public TextView name;
 
+    // 各種ボタン
     public ImageButton amazonButton;
+    public ToggleButton fixButton;
 
-    public Boolean initFlag = true; //ビューの初期化フラグ。 Flagmentが所有するViewを初期化するgetObjects()をタイマーで実行する際、このフラグがtrueであった時(一度目)のみ初期化する
+    public Boolean initFlag = false; //ビューの初期化が行われていればTrueに。非同期処理の関係で、初期化の可否を確認するフラグが必要であった為追加。
+    public Boolean fixFlag = false; // 更新せず固定するフラグ
+
+    // APIの実行結果
+    private String APIResult = "";
 
     //public ImageView productImage;
 
@@ -72,51 +88,63 @@ public class CameraActivity extends Activity {
                     .add(R.id.container, Camera2BasicFragment.newInstance())
                     .commit();
         }
-        timer = new Timer();
+        sendImageTimer = new Timer();
+        displayReloadTimer = new Timer();
         fixMediaDir();
-//        getObjects();
         displayProduct = new Product();
         sendImageTimer();
+        setResultTimer();
     }
+
+    @Override
+    protected void onStart()
+    {
+        super.onStart();
+        System.out.println("ONSTART");
+        getObjects();
+    }
+
 
 
     // TextViewなどをIDから取得、恐らくFragmentが追加されて後に実行しないとエラーが発生する
     public void getObjects()
     {
-        // かなり強引な分岐処理、正直良くない。 Flagmentの初期化が完了した後にコールバックする方法を見つけて解決するのが適切か
-        if(initFlag) {
-            // オブジェクトを取得し保存
-            review_1 = (TextView) findViewById(R.id.reviewView_1);
-            review_2 = (TextView) findViewById(R.id.reviewView_2);
-            review_3 = (TextView) findViewById(R.id.reviewView_3);
-            rating = (RatingBar) findViewById(R.id.ratingBar);
-            price = (TextView) findViewById(R.id.price);
-            name = (TextView) findViewById(R.id.name);
+        // オブジェクトを取得し保存
+        cameraView = (TextureView) findViewById(R.id.texture);
+        review_1 = (TextView) findViewById(R.id.reviewView_1);
+        review_2 = (TextView) findViewById(R.id.reviewView_2);
+        review_3 = (TextView) findViewById(R.id.reviewView_3);
+        rating = (RatingBar) findViewById(R.id.ratingBar);
+        price = (TextView) findViewById(R.id.price);
+        name = (TextView) findViewById(R.id.name);
 
-            amazonButton = (ImageButton) findViewById(R.id.linkToAmazon);
+        amazonButton = (ImageButton) findViewById(R.id.linkToAmazon);
+        fixButton = (ToggleButton) findViewById(R.id.fixButton);
 
-            System.out.println(price.getClass());
-            System.out.println(name.getClass());
+        // 行数指定などの細かい設定
+        setTextViewOption(name, TextUtils.TruncateAt.MARQUEE);
+        setTextViewOption(review_1, TextUtils.TruncateAt.END);
+        setTextViewOption(review_2, TextUtils.TruncateAt.END);
+        setTextViewOption(review_3, TextUtils.TruncateAt.END);
 
-            // 行数指定などの細かい設定
-            setTextViewOption(name, TextUtils.TruncateAt.MARQUEE);
-            setTextViewOption(review_1, TextUtils.TruncateAt.END);
-            setTextViewOption(review_2, TextUtils.TruncateAt.END);
-            setTextViewOption(review_3, TextUtils.TruncateAt.END);
+        // イベント設定、これらも本来はOnCreateでやる処理だが、そちらだとオブジェクトが取得出来ない為こちらで定義。
+        setEventListnerTolinkToAmazonButton();
+        setEventListnerToFavoriteButton();
+        setEventListnerToFixButton();
 
-            // イベント設定、これらも本来はOnCreateでやる処理だが、そちらだとオブジェクトが取得出来ない為こちらで定義。
-            setEventListnerToFavoriteButton();
-            setEventListnerTolinkToAmazonButton();
-
-            initFlag = false;
-        }
+        initFlag = true;
     }
 
 
     // Timerを定義する。 実行内容はsendImageメソッド
     public void sendImageTimer(){
         TimerTask timerTask = new SendImageTimer(this);
-        timer.scheduleAtFixedRate(timerTask, 0, 5000);
+        sendImageTimer.scheduleAtFixedRate(timerTask, 0, 5000);
+    }
+
+    public void setResultTimer(){
+        TimerTask timerTask = new ReloadTimer(this);
+        displayReloadTimer.scheduleAtFixedRate(timerTask, 0, 1000);
     }
 
     //お気に入りボタンにイベントを追加設定する
@@ -141,6 +169,26 @@ public class CameraActivity extends Activity {
         });
     }
 
+    public void setEventListnerToFixButton()
+    {
+
+        fixButton.setOnCheckedChangeListener(new OnCheckedChangeListener()
+        {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                fixFlag = fixButton.isChecked();
+            }
+        });
+    }
+
+    // FixButtonの状態を変更する
+    public void changeDisplayFixButton()
+    {
+
+    }
+
+
+
 
     // テスト用データを設定するメソッド
     public void setTestData()
@@ -152,6 +200,11 @@ public class CameraActivity extends Activity {
 //        displayProduct.setDammyData();
     }
 
+    public void setDisplayData()
+    {
+        displayProduct.getProductForXML(APIResult);
+    }
+
     // 引数で受け取ったテキストビューを一行表示にし、省略方法を指定する
     public void setTextViewOption(TextView target, TextUtils.TruncateAt truncate)
     {
@@ -160,20 +213,34 @@ public class CameraActivity extends Activity {
         target.setEllipsize(truncate);
     }
 
-
-
     // TextureViewに設定されている画像を引数として、APIに画像を送る関数を呼び出す
     public void sendImage()
     {
+        if(initFlag && (!fixFlag) && cameraView.getBitmap() != null)
+        {
+            System.out.println("SENDIMAGE");
+            //テスト用bitmp
+//            Resources r = getResources();
+//            Bitmap bmp = BitmapFactory.decodeResource(r, R.drawable.yutori);
+//            String img_base64 = BMP_to_Base64(bmp);
 
-        //画像を保存し、実際にTextureViewから画像を取り出せるかテストを行った。
-//        if (checkPermissionREAD_EXTERNAL_STORAGE(this)) {
-//            System.out.println(Environment.getExternalStorageDirectory().getAbsolutePath());
-//            TextureView texture = (TextureView) findViewById(R.id.texture);
-//            saveBitmap(texture.getBitmap());
-//        }
-
+            // 本番用、カメラからbmp取得
+            String img_base64 = BMP_to_Base64(cameraView.getBitmap());
+            // APIクラス
+            Core_API APIs = new Core_API(this);
+            APIs.execute(img_base64);
+        }
     }
+
+    public void displayReload()
+    {
+        if(initFlag)
+        {
+            setDisplayData();
+            setResult();
+        }
+    }
+
 
     public void setResult()
     {
@@ -182,10 +249,8 @@ public class CameraActivity extends Activity {
         if(!name.getText().equals(displayProduct.name))
         {
             setImage();
-
             setPrice();
             setName();
-
             resetButton();
         }
         // ReviewとRatingは非同期処理の関係で、データを取得出来るタイミングが僅かに異なる為別に分ける。
@@ -219,7 +284,14 @@ public class CameraActivity extends Activity {
 
     public void setPrice()
     {
-        price.setText("¥" + displayProduct.price);
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                price.setText("¥" + displayProduct.price);
+            }
+        });
+        System.out.println(displayProduct.price);
+
     }
 
     public void setName() {
@@ -320,4 +392,19 @@ public class CameraActivity extends Activity {
                         grantResults);
         }
     }
+
+    public static String BMP_to_Base64( Bitmap bmp ){
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bmp.compress(Bitmap.CompressFormat.PNG, 0, baos);
+        byte[] bytes = baos.toByteArray();
+        String img_base64 = Base64.encodeToString(bytes, Base64.DEFAULT);
+        return img_base64;
+    }
+
+    public void setAPIResult(String result)
+    {
+        System.out.println(result);
+        APIResult = result;
+    }
+
 }

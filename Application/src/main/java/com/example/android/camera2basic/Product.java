@@ -102,34 +102,36 @@ public class Product {
     {
         try{
 
-            InputSource inputSource = new InputSource(new StringReader(amazon_xml));
+            if(amazon_xml.length() > 0) {
+                System.out.println(amazon_xml);
+                InputSource inputSource = new InputSource(new StringReader(amazon_xml));
 
-            //DOMを使うためのインスタンス取得
-            Document document= DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(inputSource);
+                //DOMを使うためのインスタンス取得
+                Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(inputSource);
 
-            Element root = document.getDocumentElement();
+                Element root = document.getDocumentElement();
 
-            // Itemノード(一番上の商品)を取得
-            Node item = getChildNodeByNodeName(root.getLastChild(), "Item");
-            Node itemAttributes = getChildNodeByNodeName(item, "ItemAttributes");
-            Node mediumImage = getChildNodeByNodeName(getChildNodeByNodeName(item, "ImageSets").getFirstChild(), "MediumImage");
+                // Itemノード(一番上の商品)を取得
+                Node item = getChildNodeByNodeName(root.getLastChild(), "Item");
+                Node itemAttributes = getChildNodeByNodeName(item, "ItemAttributes");
+                Node mediumImage = getChildNodeByNodeName(getChildNodeByNodeName(item, "ImageSets").getFirstChild(), "MediumImage");
 
-            if(!name.equals(getChildNodeByNodeName(itemAttributes, "Title").getTextContent())) {
-                name = getChildNodeByNodeName(itemAttributes, "Title").getTextContent();
-                price = Integer.parseInt(getChildNodeByNodeName(item, "OfferSummary").getFirstChild().getFirstChild().getTextContent());
-                imageURL = getChildNodeByNodeName(mediumImage, "URL").getTextContent();
-                amazonURL = getChildNodeByNodeName(item, "DetailPageURL").getTextContent();
-            }
+                if (!name.equals(getChildNodeByNodeName(itemAttributes, "Title").getTextContent())) {
+                    name = getChildNodeByNodeName(itemAttributes, "Title").getTextContent();
+                    price = Integer.parseInt(getChildNodeByNodeName(item, "OfferSummary").getFirstChild().getFirstChild().getTextContent());
+                    imageURL = getChildNodeByNodeName(mediumImage, "URL").getTextContent();
+                    amazonURL = getChildNodeByNodeName(item, "DetailPageURL").getTextContent();
+                }
 
-            String nextIFrameURL = getChildNodeByNodeName(item, "CustomerReviews").getFirstChild().getTextContent();
+                String nextIFrameURL = getChildNodeByNodeName(item, "CustomerReviews").getFirstChild().getTextContent();
 
-            if(!iFrameUrl.equals(nextIFrameURL) || reviews[0].title.equals(""))
-            {
-                // iFrameUrl = レビューや評価点数が書かれたHTMLのURLを取得
-                iFrameUrl = nextIFrameURL;
-                // iFrameHTMLにレビューや評価点数が書かれたHTMLを格納する。
-                getHTML(iFrameUrl);
-                // GetHTMLの中でsetDataByHtml()を呼び出して評価やレビューを取得している
+                if (!iFrameUrl.equals(nextIFrameURL) || reviews[0].title.equals("")) {
+                    // iFrameUrl = レビューや評価点数が書かれたHTMLのURLを取得
+                    iFrameUrl = nextIFrameURL;
+                    // iFrameHTMLにレビューや評価点数が書かれたHTMLを格納する。
+                    getHTML(iFrameUrl);
+                    // GetHTMLの中でsetDataByHtml()を呼び出して評価やレビューを取得している
+                }
             }
 
         }

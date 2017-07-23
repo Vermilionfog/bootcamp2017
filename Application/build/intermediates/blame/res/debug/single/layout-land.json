@@ -1,6 +1,10 @@
 [
     {
-        "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/res/merged/debug/layout-land/fragment_camera2_basic.xml",
-        "source": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/src/main/res/layout-land/fragment_camera2_basic.xml"
+        "merged": "C:\\Users\\usr0301385\\Bootcamp\\Bootcamp2017\\bootcamp2017\\Application\\build\\intermediates\\res\\merged\\debug\\layout-land\\fragment_camera2_basic.xml",
+        "source": "C:\\Users\\usr0301385\\Bootcamp\\Bootcamp2017\\bootcamp2017\\Application\\src\\main\\res\\layout-land\\fragment_camera2_basic.xml"
+    },
+    {
+        "merged": "C:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\build\\intermediates\\res\\merged\\debug\\layout-land\\fragment_camera2_basic.xml",
+        "source": "C:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\src\\main\\res\\layout-land\\fragment_camera2_basic.xml"
     }
 ]

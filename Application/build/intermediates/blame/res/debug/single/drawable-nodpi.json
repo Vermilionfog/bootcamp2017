@@ -1,6 +1,22 @@
 [
     {
-        "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/res/merged/debug/drawable-nodpi/amazon_icon.png",
-        "source": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/src/main/res/drawable-nodpi/amazon_icon.png"
+        "merged": "C:\\Users\\usr0301385\\Bootcamp\\Bootcamp2017\\bootcamp2017\\Application\\build\\intermediates\\res\\merged\\debug\\drawable-nodpi\\amazon_icon.png",
+        "source": "C:\\Users\\usr0301385\\Bootcamp\\Bootcamp2017\\bootcamp2017\\Application\\src\\main\\res\\drawable-nodpi\\amazon_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\build\\intermediates\\res\\merged\\debug\\drawable-nodpi\\amazon_icon.png",
+        "source": "C:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\src\\main\\res\\drawable-nodpi\\amazon_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\build\\intermediates\\res\\merged\\debug\\drawable-nodpi\\favorite_on.png",
+        "source": "C:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\src\\main\\res\\drawable-nodpi\\favorite_on.png"
+    },
+    {
+        "merged": "C:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\build\\intermediates\\res\\merged\\debug\\drawable-nodpi\\ping.png",
+        "source": "C:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\src\\main\\res\\drawable-nodpi\\ping.png"
+    },
+    {
+        "merged": "C:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\build\\intermediates\\res\\merged\\debug\\drawable-nodpi\\favorite_off.png",
+        "source": "C:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\src\\main\\res\\drawable-nodpi\\favorite_off.png"
     }
 ]

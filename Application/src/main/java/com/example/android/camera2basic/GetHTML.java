@@ -37,8 +37,8 @@ public class GetHTML extends AsyncTask<String, Void, String> {
         catch (IOException e) {
             System.out.println("IOException");
             e.printStackTrace();
+            return "";
         }
-        return null;
     }
     /*
      * メインスレッドで実行する処理

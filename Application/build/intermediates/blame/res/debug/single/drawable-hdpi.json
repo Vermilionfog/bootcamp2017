@@ -1,14 +1,26 @@
 [
     {
-        "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/res/merged/debug/drawable-hdpi/ic_action_info.png",
-        "source": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/src/main/res/drawable-hdpi/ic_action_info.png"
+        "merged": "C:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\ic_action_info.png",
+        "source": "C:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\src\\main\\res\\drawable-hdpi\\ic_action_info.png"
     },
     {
-        "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/res/merged/debug/drawable-hdpi/tile.9.png",
-        "source": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/src/main/res/drawable-hdpi/tile.9.png"
+        "merged": "C:\\Users\\usr0301385\\Bootcamp\\Bootcamp2017\\bootcamp2017\\Application\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\tile.9.png",
+        "source": "C:\\Users\\usr0301385\\Bootcamp\\Bootcamp2017\\bootcamp2017\\Application\\src\\main\\res\\drawable-hdpi\\tile.9.png"
     },
     {
-        "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/res/merged/debug/drawable-hdpi/ic_launcher.png",
-        "source": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/src/main/res/drawable-hdpi/ic_launcher.png"
+        "merged": "C:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\ic_launcher.png",
+        "source": "C:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\src\\main\\res\\drawable-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\usr0301385\\Bootcamp\\Bootcamp2017\\bootcamp2017\\Application\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\ic_launcher.png",
+        "source": "C:\\Users\\usr0301385\\Bootcamp\\Bootcamp2017\\bootcamp2017\\Application\\src\\main\\res\\drawable-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\usr0301385\\Bootcamp\\Bootcamp2017\\bootcamp2017\\Application\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\ic_action_info.png",
+        "source": "C:\\Users\\usr0301385\\Bootcamp\\Bootcamp2017\\bootcamp2017\\Application\\src\\main\\res\\drawable-hdpi\\ic_action_info.png"
+    },
+    {
+        "merged": "C:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\tile.9.png",
+        "source": "C:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\src\\main\\res\\drawable-hdpi\\tile.9.png"
     }
 ]
