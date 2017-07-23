@@ -61,7 +61,7 @@ public class Core_API extends AsyncTask<String, Void, String> {
     protected static String Google_Cloud_Vision_API(String img_base64) throws IOException, JSONException {
 
         String USER_AGENT = "Mozilla/5.0";
-        String url = "https://vision.googleapis.com/v1/images:annotate?key=AIzaSyC3eN7Sqt3HnPyyA_vVTo43kmGWcAqkjs0";
+        String url = "";
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
@@ -165,6 +165,7 @@ public class Core_API extends AsyncTask<String, Void, String> {
         TreeMap<String,String> kwargs = new TreeMap<String,String>();
 
         //ここにアクセスキーやシークレットキーを入力するコードを追加して利用する。
+
 
         //add Timestamp
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'");

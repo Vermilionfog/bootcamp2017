@@ -168,12 +168,11 @@
       <file leaf-file-name="Core_API.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Application/src/main/java/com/example/android/camera2basic/Core_API.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="167" column="8" selection-start-line="167" selection-start-column="8" selection-end-line="167" selection-end-column="8" />
+            <state relative-caret-position="541">
+              <caret line="63" column="22" selection-start-line="63" selection-start-column="22" selection-end-line="63" selection-end-column="22" />
               <folding>
                 <element signature="e#1565#1566#0" expanded="true" />
                 <element signature="e#1614#1615#0" expanded="true" />
-                <marker date="1500813383818" expanded="true" signature="5791:5862" ph="//..." />
               </folding>
             </state>
           </provider>
@@ -2859,12 +2858,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Application/src/main/java/com/example/android/camera2basic/Core_API.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="167" column="8" selection-start-line="167" selection-start-column="8" selection-end-line="167" selection-end-column="8" />
+        <state relative-caret-position="541">
+          <caret line="63" column="22" selection-start-line="63" selection-start-column="22" selection-end-line="63" selection-end-column="22" />
           <folding>
             <element signature="e#1565#1566#0" expanded="true" />
             <element signature="e#1614#1615#0" expanded="true" />
-            <marker date="1500813383818" expanded="true" signature="5791:5862" ph="//..." />
           </folding>
         </state>
       </provider>
