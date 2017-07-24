@@ -102,8 +102,9 @@ public class Product {
     {
         try{
 
+            // 取得できているかを確認
             if(amazon_xml.length() > 0) {
-                System.out.println(amazon_xml);
+                //System.out.println(amazon_xml);
                 InputSource inputSource = new InputSource(new StringReader(amazon_xml));
 
                 //DOMを使うためのインスタンス取得
@@ -112,28 +113,31 @@ public class Product {
                 Element root = document.getDocumentElement();
 
                 // Itemノード(一番上の商品)を取得
-                Node item = getChildNodeByNodeName(root.getLastChild(), "Item");
-                Node itemAttributes = getChildNodeByNodeName(item, "ItemAttributes");
-                Node mediumImage = getChildNodeByNodeName(getChildNodeByNodeName(item, "ImageSets").getFirstChild(), "MediumImage");
+                Node items = root.getLastChild();
 
-                if (!name.equals(getChildNodeByNodeName(itemAttributes, "Title").getTextContent())) {
-                    name = getChildNodeByNodeName(itemAttributes, "Title").getTextContent();
-                    price = Integer.parseInt(getChildNodeByNodeName(item, "OfferSummary").getFirstChild().getFirstChild().getTextContent());
-                    imageURL = getChildNodeByNodeName(mediumImage, "URL").getTextContent();
-                    amazonURL = getChildNodeByNodeName(item, "DetailPageURL").getTextContent();
-                }
+                if(checkErrorNode(items)) {
+                    Node item = getChildNodeByNodeName(items, "Item");
+                    Node itemAttributes = getChildNodeByNodeName(item, "ItemAttributes");
+                    Node mediumImage = getChildNodeByNodeName(getChildNodeByNodeName(item, "ImageSets").getFirstChild(), "MediumImage");
 
-                String nextIFrameURL = getChildNodeByNodeName(item, "CustomerReviews").getFirstChild().getTextContent();
+                    if (!name.equals(getChildNodeByNodeName(itemAttributes, "Title").getTextContent())) {
+                        name = getChildNodeByNodeName(itemAttributes, "Title").getTextContent();
+                        price = Integer.parseInt(getChildNodeByNodeName(item, "OfferSummary").getFirstChild().getFirstChild().getTextContent());
+                        imageURL = getChildNodeByNodeName(mediumImage, "URL").getTextContent();
+                        amazonURL = getChildNodeByNodeName(item, "DetailPageURL").getTextContent();
+                    }
 
-                if (!iFrameUrl.equals(nextIFrameURL) || reviews[0].title.equals("")) {
-                    // iFrameUrl = レビューや評価点数が書かれたHTMLのURLを取得
-                    iFrameUrl = nextIFrameURL;
-                    // iFrameHTMLにレビューや評価点数が書かれたHTMLを格納する。
-                    getHTML(iFrameUrl);
-                    // GetHTMLの中でsetDataByHtml()を呼び出して評価やレビューを取得している
+                    String nextIFrameURL = getChildNodeByNodeName(item, "CustomerReviews").getFirstChild().getTextContent();
+
+                    if (!iFrameUrl.equals(nextIFrameURL) || reviews[0].title.equals("")) {
+                        // iFrameUrl = レビューや評価点数が書かれたHTMLのURLを取得
+                        iFrameUrl = nextIFrameURL;
+                        // iFrameHTMLにレビューや評価点数が書かれたHTMLを格納する。
+                        getHTML(iFrameUrl);
+                        // GetHTMLの中でsetDataByHtml()を呼び出して評価やレビューを取得している
+                    }
                 }
             }
-
         }
         catch(SAXException e){
             System.out.println("SAXException");
@@ -148,10 +152,21 @@ public class Product {
         }
     }
 
+    public Boolean checkErrorNode(Node node)
+    {
+        Node errors = getChildNodeByNodeName(getChildNodeByNodeName(node,"Request"), "Errors");
+        if(errors == null) {
+            return true;
+        }
+        return false;
+    }
+
 
     // parentの子ノードの中から、nodenameと等しいノード名を持つノードを返却する
     public Node getChildNodeByNodeName(Node parent, String nodename)
     {
+        if(parent == null)
+            return null;
         NodeList childs = parent.getChildNodes();
         int i = 0;
         while(i < childs.getLength())
@@ -163,7 +178,6 @@ public class Product {
             }
             i++;
         }
-        System.out.println("NULL");
         return null;
     }
 
@@ -187,15 +201,14 @@ public class Product {
         // 過剰なアクセスなどでAmazonに繋がらなくなった場合、エラーで実行出来なくなる。
         try {
             if (iFrameHTML != null) {
-                System.out.println("getRatingByHtml");
                 // org.w3c.dom.Document と重複する為、org~から記述
                 org.jsoup.nodes.Document doc = Jsoup.parse(iFrameHTML);
-
-                Integer rating_five = Integer.parseInt(doc.select("div.histoRowfive > a > div.histoCount").text());
-                Integer rating_four = Integer.parseInt(doc.select("div.histoRowfour > a > div.histoCount").text());
-                Integer rating_three = Integer.parseInt(doc.select("div.histoRowthree > a > div.histoCount").text());
-                Integer rating_two = Integer.parseInt(doc.select("div.histoRowtwo > a > div.histoCount").text());
-                Integer rating_one = Integer.parseInt(doc.select("div.histoRowone > div.histoCount").text());
+                //数値が0の場合は、 histoRowfive と div.histoCount の間にaが入らない
+                Integer rating_five = Integer.parseInt(doc.select("div.histoRowfive div.histoCount").text());
+                Integer rating_four = Integer.parseInt(doc.select("div.histoRowfour div.histoCount").text());
+                Integer rating_three = Integer.parseInt(doc.select("div.histoRowthree div.histoCount").text());
+                Integer rating_two = Integer.parseInt(doc.select("div.histoRowtwo div.histoCount").text());
+                Integer rating_one = Integer.parseInt(doc.select("div.histoRowone div.histoCount").text());
                 Integer sum = (rating_five * 5) + (rating_four * 4) + (rating_three * 3) + (rating_two * 2) + (rating_one);
                 Integer count = rating_five + rating_four + rating_three + rating_two + rating_one;
                 rating = (Float) sum.floatValue()/count.floatValue();
@@ -225,9 +238,9 @@ public class Product {
                 {
                     title = doc.select("body > div.crIFrame > div.crIframeReviewList > table > tbody > tr > td > div:nth-child(3) > div > b").text();
                     text = doc.select("body > div.crIFrame > div.crIframeReviewList > table > tbody > tr > td > div:nth-child(3) > div.reviewText").text();
-                    System.out.println(title);
                     reviews[0].title = title;
                     reviews[0].text = text;
+                    System.out.println(title);
                 }
                 Elements review_2 = doc.select("body > div.crIFrame > div.crIframeReviewList > table > tbody > tr > td > div:nth-child(6)");
                 if(review_1 != null)
@@ -252,7 +265,6 @@ public class Product {
             reviews[0] = new Review("", "");
             reviews[1] = new Review("", "");
             reviews[2] = new Review("", "");
-            System.out.println("Reviews : Exception");
         }
     }
 

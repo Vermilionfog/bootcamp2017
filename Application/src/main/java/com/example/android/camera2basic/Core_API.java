@@ -26,22 +26,29 @@ import javax.crypto.spec.SecretKeySpec;
 
 public class Core_API extends AsyncTask<String, Void, String> {
 
-    private CameraActivity mainActivity;
+    public CameraActivity mainActivity;
+    private long start;
+    private long end;
 
     // Constructer
     public Core_API(CameraActivity activity) {
         super();
+        start = System.currentTimeMillis();
         this.mainActivity = activity;
     }
 
     // Method of Background Job
     @Override
     protected String doInBackground(String... value) {
+        System.out.println("API Start");
 
         try {
 //            return Google_Cloud_Vision_API( value[0]);
 //            return URLGET( AmazonAPI_Req("sennheiser HD800") )
-            return URLGET( AmazonAPI_Req(Google_Cloud_Vision_API( value[0])) );
+            String targetText =Google_Cloud_Vision_API( value[0]);
+            System.out.println("検索対象の文字列 :" + targetText);
+//            mainActivity.setRecognitionText(targetText);
+            return URLGET( AmazonAPI_Req(targetText));
         } catch (IOException e) {
             e.printStackTrace();
             return "IOException Error!!!!";
@@ -56,48 +63,57 @@ public class Core_API extends AsyncTask<String, Void, String> {
     @Override
     protected void onPostExecute(String result) {
         mainActivity.setAPIResult(result);
+        end = System.currentTimeMillis();
+        System.out.println("Core_API " + (end-start) + "ms");
     }
 
     protected static String Google_Cloud_Vision_API(String img_base64) throws IOException, JSONException {
 
-        String USER_AGENT = "Mozilla/5.0";
-        String url = "";
-        URL obj = new URL(url);
-        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+        try {
+            String USER_AGENT = "Mozilla/5.0";
 
-        // add request header
-        con.setRequestMethod("POST");
-        con.setRequestProperty("User-Agent", USER_AGENT);
-        con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
-        con.setRequestProperty("Accept-Language", "ja");
-        con.setRequestProperty("Content-Type", "application/json");
+            URL obj = new URL(url);
+            HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
-        String json = Build_JSON_for_Google(img_base64);
+            // add request header
+            con.setRequestMethod("POST");
+            con.setRequestProperty("User-Agent", USER_AGENT);
+            con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
+            con.setRequestProperty("Accept-Language", "ja");
+            con.setRequestProperty("Content-Type", "application/json");
 
-        con.setDoOutput(true);
-        DataOutputStream DOS = new DataOutputStream(con.getOutputStream());
-        DOS.writeBytes(json);
-        DOS.flush();
-        DOS.close();
+            String json = Build_JSON_for_Google(img_base64);
 
-        int responseCode = con.getResponseCode();
-        System.out.println("\nSending 'POST' request to URL : " + url);
-        System.out.println("Response Code : " + responseCode);
+            con.setDoOutput(true);
+            DataOutputStream DOS = new DataOutputStream(con.getOutputStream());
+            DOS.writeBytes(json);
+            DOS.flush();
+            DOS.close();
 
-        BufferedReader in = new BufferedReader( new InputStreamReader(con.getInputStream()) );
-        String inputLine;
-        StringBuffer response = new StringBuffer();
+            int responseCode = con.getResponseCode();
+            System.out.println("\nSending 'POST' request to URL : " + url);
+            System.out.println("Response Code : " + responseCode);
 
-        while ((inputLine = in.readLine()) != null) {
-            response.append(inputLine);
+            BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+            String inputLine;
+            StringBuffer response = new StringBuffer();
+
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+            in.close();
+
+            // parse json
+            JSONObject googleapi_json = new JSONObject(response.toString());
+            String total_txt = googleapi_json.getJSONArray("responses").getJSONObject(0).getJSONArray("textAnnotations").getJSONObject(0).getString("description");
+
+            System.out.println(total_txt);
+            return total_txt;
         }
-        in.close();
-
-        // parse json
-        JSONObject googleapi_json = new JSONObject( response.toString() );
-        String total_txt = googleapi_json.getJSONArray("responses").getJSONObject(0).getJSONArray("textAnnotations").getJSONObject(0).getString("description");
-
-        return total_txt;
+        catch(Exception e)
+        {
+            return "Ruby on Rails";
+        }
     }
 
     public static String Build_JSON_for_Google(String base64image){
@@ -107,30 +123,39 @@ public class Core_API extends AsyncTask<String, Void, String> {
     ////////////////////////////////////////////////////////////////////////
 
     protected static String URLGET(String urlstr) throws IOException {
-        String USER_AGENT = "Mozilla/5.0";
-//        String url = "http://google.com/search?q=探したい単語";
+        try {
+            String USER_AGENT = "Mozilla/5.0";
+            //        String url = "http://google.com/search?q=探したい単語";
 
-        URL obj = new URL(urlstr);
-        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-        // optional default is GET
-        con.setRequestMethod("GET");
-        // add requesy header
-        con.setRequestProperty("User-Agent", USER_AGENT);
+            URL obj = new URL(urlstr);
+            HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+            // optional default is GET
+            con.setRequestMethod("GET");
+            // add requesy header
+            con.setRequestProperty("User-Agent", USER_AGENT);
 
-        int responseCode = con.getResponseCode();
-        System.out.println("\nSending 'GET' request to URL : " + urlstr);
-        System.out.println("Response Code : " + responseCode);
+            int responseCode = con.getResponseCode();
+            System.out.println("\nSending 'GET' request to URL : " + urlstr);
+            System.out.println("Response Code : " + responseCode);
 
-        BufferedReader in = new BufferedReader( new InputStreamReader(con.getInputStream()) );
-        String inputLine;
-        StringBuffer response = new StringBuffer();
+            System.out.println(con.getInputStream());
+            BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+            String inputLine;
+            StringBuffer response = new StringBuffer();
 
-        while ((inputLine = in.readLine()) != null) {
-            response.append(inputLine);
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+            in.close();
+
+            return response.toString();
         }
-        in.close();
-
-        return response.toString();
+        catch(Exception e)
+        {
+            System.out.println("エラー");
+            e.printStackTrace();
+            return "";
+        }
     }
 
     protected static String Amazon_API(String urlstr) throws IOException {
@@ -162,8 +187,6 @@ public class Core_API extends AsyncTask<String, Void, String> {
 
     //==========Make Amazon Request======================================
     public static String AmazonAPI_Req(String Keywords){
-        TreeMap<String,String> kwargs = new TreeMap<String,String>();
-
         //ここにアクセスキーやシークレットキーを入力するコードを追加して利用する。
 
 

@@ -25,7 +25,11 @@ public class SendImageTimer extends TimerTask {
         handler.post(new Runnable() {
             @Override
             public void run() {
-                ((CameraActivity) context).sendImage();
+                long start = System.currentTimeMillis();
+                ExecuteCoreAPI exeCoreAPI = new ExecuteCoreAPI(((CameraActivity) context));
+                exeCoreAPI.execute();
+                long end = System.currentTimeMillis();
+                System.out.println("SendImageTimer#run " + (end-start) + "ms");
             }
         });
     }

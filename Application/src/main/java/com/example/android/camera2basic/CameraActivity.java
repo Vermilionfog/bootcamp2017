@@ -73,6 +73,8 @@ public class CameraActivity extends Activity {
     public Boolean initFlag = false; //ビューの初期化が行われていればTrueに。非同期処理の関係で、初期化の可否を確認するフラグが必要であった為追加。
     public Boolean fixFlag = false; // 更新せず固定するフラグ
 
+    //デバッグ用
+    public TextView recognitionText;
     // APIの実行結果
     private String APIResult = "";
 
@@ -121,6 +123,9 @@ public class CameraActivity extends Activity {
         amazonButton = (ImageButton) findViewById(R.id.linkToAmazon);
         fixButton = (ToggleButton) findViewById(R.id.fixButton);
 
+        //デバッグ用
+        recognitionText = (TextView)findViewById(R.id.recognitionText);
+
         // 行数指定などの細かい設定
         setTextViewOption(name, TextUtils.TruncateAt.MARQUEE);
         setTextViewOption(review_1, TextUtils.TruncateAt.END);
@@ -139,7 +144,7 @@ public class CameraActivity extends Activity {
     // Timerを定義する。 実行内容はsendImageメソッド
     public void sendImageTimer(){
         TimerTask timerTask = new SendImageTimer(this);
-        sendImageTimer.scheduleAtFixedRate(timerTask, 0, 5000);
+        sendImageTimer.scheduleAtFixedRate(timerTask, 0, 30000);
     }
 
     public void setResultTimer(){
@@ -216,20 +221,26 @@ public class CameraActivity extends Activity {
     // TextureViewに設定されている画像を引数として、APIに画像を送る関数を呼び出す
     public void sendImage()
     {
+        long start = System.currentTimeMillis();
         if(initFlag && (!fixFlag) && cameraView.getBitmap() != null)
         {
-            System.out.println("SENDIMAGE");
             //テスト用bitmp
 //            Resources r = getResources();
 //            Bitmap bmp = BitmapFactory.decodeResource(r, R.drawable.yutori);
 //            String img_base64 = BMP_to_Base64(bmp);
 
+            long convert_start = System.currentTimeMillis();
             // 本番用、カメラからbmp取得
             String img_base64 = BMP_to_Base64(cameraView.getBitmap());
+            long convert_end = System.currentTimeMillis();
+            System.out.println("BMP_Convert " + (convert_end-convert_start) +"ms");
             // APIクラス
             Core_API APIs = new Core_API(this);
             APIs.execute(img_base64);
         }
+
+        long end = System.currentTimeMillis();
+        System.out.println("SendImage " + (end-start) + "ms");
     }
 
     public void displayReload()
@@ -244,34 +255,38 @@ public class CameraActivity extends Activity {
 
     public void setResult()
     {
-        // 以前確認していた商品と同一名でなければ、表示されるデータを更新する。
-        // この処理を挟まない場合
-        if(!name.getText().equals(displayProduct.name))
-        {
-            setImage();
-            setPrice();
-            setName();
-            resetButton();
-        }
-        // ReviewとRatingは非同期処理の関係で、データを取得出来るタイミングが僅かに異なる為別に分ける。
-        // 分けない場合、レビューは更新されていないが、名称は更新されているという状態になり
-        if(!review_1.getText().equals(displayProduct.reviews[0].title))
-        {
-            setRating();
-            setReviews();
-        }
-
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                // 以前確認していた商品と同一名でなければ、表示されるデータを更新する。
+                // この処理を挟まない場合
+                if(!name.getText().equals(displayProduct.name))
+                {
+                    setImage();
+                    setPrice();
+                    setName();
+                    resetButton();
+                }
+                // ReviewとRatingは非同期処理の関係で、データを取得出来るタイミングが僅かに異なる為別に分ける。
+                // 分けない場合、レビューは更新されていないが、名称は更新されているという状態になり
+                if(!review_1.getText().equals(displayProduct.reviews[0].title))
+                {
+                    setRating();
+                    setReviews();
+                }
+            }
+        });
     }
 
     public void setImage()
     {
         GetBitmap task = new GetBitmap(this);
-        System.out.println(displayProduct.imageURL);
         task.execute(displayProduct.imageURL);
     }
 
     public void setReviews()
     {
+
         review_1.setText(displayProduct.reviews[0].title);
         review_2.setText(displayProduct.reviews[1].title);
         review_3.setText(displayProduct.reviews[2].title);
@@ -284,14 +299,7 @@ public class CameraActivity extends Activity {
 
     public void setPrice()
     {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                price.setText("¥" + displayProduct.price);
-            }
-        });
-        System.out.println(displayProduct.price);
-
+        price.setText("¥" + displayProduct.price);
     }
 
     public void setName() {
@@ -301,8 +309,6 @@ public class CameraActivity extends Activity {
     public void resetButton()
     {
         // URLが何も入っていない時、Amazonへのリンクを非アクティブにする
-        System.out.println(displayProduct.getClass());
-        System.out.println(displayProduct.amazonURL.getClass());
         if(displayProduct.amazonURL.equals("")) {
             amazonButton.setActivated(false);
         }
@@ -403,8 +409,12 @@ public class CameraActivity extends Activity {
 
     public void setAPIResult(String result)
     {
-        System.out.println(result);
         APIResult = result;
+    }
+
+    public void setRecognitionText(String text)
+    {
+        recognitionText.setText(text);
     }
 
 }
