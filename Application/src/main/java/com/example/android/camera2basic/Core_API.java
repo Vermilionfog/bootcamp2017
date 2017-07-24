@@ -72,7 +72,6 @@ public class Core_API extends AsyncTask<String, Void, String> {
 
         try {
             String USER_AGENT = "Mozilla/5.0";
-
             URL obj = new URL(url);
             HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
@@ -192,7 +191,7 @@ public class Core_API extends AsyncTask<String, Void, String> {
     //==========Make Amazon Request======================================
     public static String AmazonAPI_Req(String Keywords){
         //ここにアクセスキーやシークレットキーを入力するコードを追加して利用する。
-        TreeMap<String,String> kwargs = new TreeMap<String,String>();
+
 
         //add Timestamp
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'");
@@ -272,7 +271,8 @@ public class Core_API extends AsyncTask<String, Void, String> {
         String result = "";
         while(i < word.length && i<2)
         {
-            result += (word[i] + "\n");
+//            result += (word[i] + "\n");
+            result += (word[i] + " || ");
             i++;
         }
 

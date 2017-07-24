@@ -236,12 +236,11 @@
     <ProgressBar
         android:id="@+id/sendImageProgress"
         style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="350dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignTop="@+id/recognitionText"
-        android:layout_marginStart="21dp"
         android:max="100"
-        android:progress="0" />
+        android:progress="0"
+        android:layout_above="@+id/sendImageView"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

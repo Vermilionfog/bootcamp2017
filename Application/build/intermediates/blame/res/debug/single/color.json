@@ -44,12 +44,12 @@
         "source": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\usr0301385\\.android\\build-cache\\3c13e857920ee84073a9979ef030568917043780\\output\\res\\color\\abc_btn_colored_borderless_text_material.xml"
     },
     {
-        "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/res/merged/debug/color/switch_thumb_material_light.xml",
-        "source": "/Users/usr0301385/.android/build-cache/3c13e857920ee84073a9979ef030568917043780/output/res/color/switch_thumb_material_light.xml"
-    },
-    {
         "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/res/merged/debug/color/abc_btn_colored_borderless_text_material.xml",
         "source": "/Users/usr0301385/.android/build-cache/3c13e857920ee84073a9979ef030568917043780/output/res/color/abc_btn_colored_borderless_text_material.xml"
+    },
+    {
+        "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/res/merged/debug/color/switch_thumb_material_light.xml",
+        "source": "/Users/usr0301385/.android/build-cache/3c13e857920ee84073a9979ef030568917043780/output/res/color/switch_thumb_material_light.xml"
     },
     {
         "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/res/merged/debug/color/abc_tint_default.xml",

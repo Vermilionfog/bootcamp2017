@@ -33,16 +33,18 @@ public class SendImageTimer extends TimerTask {
         handler.post(new Runnable() {
             @Override
             public void run() {
-                COUNT++;
-                sendImageProgress.setProgress(COUNT);
+                if( !((CameraActivity)context).fixFlag) {
+                    COUNT++;
+                    sendImageProgress.setProgress(COUNT);
 
-                if( (COUNT) == sendImageProgress.getMax()) {
-                    COUNT = 0;
-                    long start = System.currentTimeMillis();
-                    ExecuteCoreAPI exeCoreAPI = new ExecuteCoreAPI(((CameraActivity) context));
-                    exeCoreAPI.execute();
-                    long end = System.currentTimeMillis();
-                    System.out.println("SendImageTimer#run " + (end - start) + "ms");
+                    if ((COUNT) == sendImageProgress.getMax()) {
+                        COUNT = 0;
+                        long start = System.currentTimeMillis();
+                        ExecuteCoreAPI exeCoreAPI = new ExecuteCoreAPI(((CameraActivity) context));
+                        exeCoreAPI.execute();
+                        long end = System.currentTimeMillis();
+                        System.out.println("SendImageTimer#run " + (end - start) + "ms");
+                    }
                 }
             }
         });

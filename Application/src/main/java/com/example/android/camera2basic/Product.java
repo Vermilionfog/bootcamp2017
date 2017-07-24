@@ -64,7 +64,7 @@ public class Product {
         reviews[1] = new Review("","");
         reviews[2] = new Review("","");
         rating = 0f;
-        imageURL = "https://images-na.ssl-images-amazon.com/images/I/51c061aHw4L.jpg";
+        imageURL = "http://shironekochannel.com/wp-content/uploads/2016/08/no-error-sign-md.png";
         amazonURL = "";
         this.activity = activity;
 
