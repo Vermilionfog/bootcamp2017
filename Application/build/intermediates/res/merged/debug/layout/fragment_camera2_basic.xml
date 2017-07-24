@@ -58,7 +58,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:text="商品のタイトルです、この部分がスクロールされます"
+                android:text="ここにタイトルが表示されます"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                 android:textSize="14sp"
@@ -102,7 +102,7 @@
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="11dp"
-                    android:text="TextView"
+                    android:text="¥0"
                     android:textAppearance="@style/TextAppearance.AppCompat.Button"
                     android:textSize="16sp"
                     tools:text="¥7777" />
@@ -123,12 +123,11 @@
 
                     <TextView
                         android:id="@+id/reviewView_1"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentTop="true"
                         android:fontFamily="casual"
-                        android:text="テストの基本"
                         android:textAlignment="viewStart"
                         android:textColor="@android:color/black" />
 
@@ -140,12 +139,11 @@
 
                     <TextView
                         android:id="@+id/reviewView_2"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
                         android:layout_below="@+id/reviewView_1"
                         android:fontFamily="casual"
-                        android:text="簡潔で明瞭"
                         android:textAlignment="viewStart"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                         android:textColor="@android:color/black" />
@@ -154,17 +152,16 @@
                 <HorizontalScrollView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
+
                     <TextView
                         android:id="@+id/reviewView_3"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
                         android:layout_below="@+id/reviewView_2"
                         android:fontFamily="casual"
-                        android:text="reviewView_1"
                         android:textAlignment="viewStart"
-                        android:textColor="@android:color/black"
-                        tools:text="一部主観が強い文面が見られ..." />
+                        android:textColor="@android:color/black" />
                 </HorizontalScrollView>
 
 
@@ -223,8 +220,28 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="152dp"
         android:layout_marginTop="21dp"
-        android:text="TextView"
-        android:textColor="@color/cardview_light_background"
-        tools:text="認識中の文字列を表示" />
+        android:textColor="@color/cardview_light_background" />
+
+    <ImageView
+        android:id="@+id/sendImageView"
+        android:layout_width="400dp"
+        android:layout_height="450dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignStart="@+id/recognitionText"
+        android:layout_below="@+id/recognitionText"
+        android:layout_marginEnd="18dp"
+        android:layout_marginTop="19dp"
+        android:background="#00000000" />
+
+    <ProgressBar
+        android:id="@+id/sendImageProgress"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/recognitionText"
+        android:layout_marginStart="21dp"
+        android:max="100"
+        android:progress="0" />
 
 </RelativeLayout>

@@ -49,6 +49,7 @@ public class GetHTML extends AsyncTask<String, Void, String> {
     protected void onPostExecute(String html) {
         product.iFrameHTML = html;
         product.setDataByHtml();
+        product.activity.displayReload();
         return;
     }
 }

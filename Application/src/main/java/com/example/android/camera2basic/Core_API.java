@@ -51,10 +51,10 @@ public class Core_API extends AsyncTask<String, Void, String> {
             return URLGET( AmazonAPI_Req(targetText));
         } catch (IOException e) {
             e.printStackTrace();
-            return "IOException Error!!!!";
+            return "IOException";
         } catch (JSONException e) {
             e.printStackTrace();
-            return "JSONException Error!!!!";
+            return "JSONException";
         }
 
     }
@@ -63,6 +63,7 @@ public class Core_API extends AsyncTask<String, Void, String> {
     @Override
     protected void onPostExecute(String result) {
         mainActivity.setAPIResult(result);
+        mainActivity.displayReload();
         end = System.currentTimeMillis();
         System.out.println("Core_API " + (end-start) + "ms");
     }
@@ -103,16 +104,19 @@ public class Core_API extends AsyncTask<String, Void, String> {
             }
             in.close();
 
+            System.out.println(response);
             // parse json
             JSONObject googleapi_json = new JSONObject(response.toString());
             String total_txt = googleapi_json.getJSONArray("responses").getJSONObject(0).getJSONArray("textAnnotations").getJSONObject(0).getString("description");
 
+            total_txt = selectProductTitle(total_txt);
             System.out.println(total_txt);
             return total_txt;
         }
         catch(Exception e)
         {
-            return "Ruby on Rails";
+            e.printStackTrace();
+            return "";
         }
     }
 
@@ -188,7 +192,7 @@ public class Core_API extends AsyncTask<String, Void, String> {
     //==========Make Amazon Request======================================
     public static String AmazonAPI_Req(String Keywords){
         //ここにアクセスキーやシークレットキーを入力するコードを追加して利用する。
-
+        TreeMap<String,String> kwargs = new TreeMap<String,String>();
 
         //add Timestamp
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'");
@@ -258,5 +262,21 @@ public class Core_API extends AsyncTask<String, Void, String> {
         return url_str;
     }
     //=================Kwargs to URL ====================================
+
+    // 画像から読み取ったワードから、重要なワードだけを選択する。
+    public static String selectProductTitle(String total_txt)
+    {
+        //改行文字で分割し、上位２つまでのワードを結合して返却する
+        String[] word = total_txt.split("\n");
+        Integer i = 0;
+        String result = "";
+        while(i < word.length && i<2)
+        {
+            result += (word[i] + "\n");
+            i++;
+        }
+
+        return result;
+    }
 
 }

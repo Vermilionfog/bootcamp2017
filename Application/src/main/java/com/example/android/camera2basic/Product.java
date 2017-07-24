@@ -31,7 +31,9 @@ public class Product {
     public static String iFrameUrl;
     public static String iFrameHTML; // レビューや評価点数の書いてあるHTMLファイル。 ASyncを利用する為に事前に定義しておく。
 
-    public Product(String _name, Integer _price, Review[] _reviews, Float _rating, String _imageURL, String _amazonURL)
+    public static CameraActivity activity;
+
+    public Product(String _name, Integer _price, Review[] _reviews, Float _rating, String _imageURL, String _amazonURL, CameraActivity activity)
     {
         name = _name;
         price = _price;
@@ -39,21 +41,21 @@ public class Product {
         rating = _rating;
         imageURL = _imageURL;
         amazonURL = _amazonURL;
-
+        this.activity = activity;
         setStaticVar();
     }
 
     // Amazon APIから帰ってきた情報を使ってデータを格納する場合
-    public Product(String _amazon_xml)
+    public Product(String _amazon_xml, CameraActivity activity)
     {
         System.out.println("Product");
         reviews = new Review[3];
         getProductForXML(_amazon_xml);
-
+        this.activity = activity;
         setStaticVar();
     }
 
-    public Product()
+    public Product(CameraActivity activity)
     {
         name = "";
         price = 0;
@@ -64,6 +66,7 @@ public class Product {
         rating = 0f;
         imageURL = "https://images-na.ssl-images-amazon.com/images/I/51c061aHw4L.jpg";
         amazonURL = "";
+        this.activity = activity;
 
         setStaticVar();
     }
@@ -100,10 +103,11 @@ public class Product {
 
     public void getProductForXML(String amazon_xml)
     {
-        try{
-
+        System.out.println("GETPRODU");
+        System.out.println(amazon_xml);
+        try {
             // 取得できているかを確認
-            if(amazon_xml.length() > 0) {
+            if (amazon_xml.length() > 0) {
                 //System.out.println(amazon_xml);
                 InputSource inputSource = new InputSource(new StringReader(amazon_xml));
 
@@ -115,7 +119,7 @@ public class Product {
                 // Itemノード(一番上の商品)を取得
                 Node items = root.getLastChild();
 
-                if(checkErrorNode(items)) {
+                if (checkErrorNode(items)) {
                     Node item = getChildNodeByNodeName(items, "Item");
                     Node itemAttributes = getChildNodeByNodeName(item, "ItemAttributes");
                     Node mediumImage = getChildNodeByNodeName(getChildNodeByNodeName(item, "ImageSets").getFirstChild(), "MediumImage");
@@ -128,7 +132,6 @@ public class Product {
                     }
 
                     String nextIFrameURL = getChildNodeByNodeName(item, "CustomerReviews").getFirstChild().getTextContent();
-
                     if (!iFrameUrl.equals(nextIFrameURL) || reviews[0].title.equals("")) {
                         // iFrameUrl = レビューや評価点数が書かれたHTMLのURLを取得
                         iFrameUrl = nextIFrameURL;
@@ -137,19 +140,26 @@ public class Product {
                         // GetHTMLの中でsetDataByHtml()を呼び出して評価やレビューを取得している
                     }
                 }
+                else
+                {
+                    name = "エラー : 読み取れませんでした";
+                    price = 0;
+                    imageURL ="http://shironekochannel.com/wp-content/uploads/2016/08/no-error-sign-md.png";
+                    amazonURL = "";
+                    rating = 0f;
+                    reviews[0] = new Review("文字が出来るだけ中央に来るようにしてください","");
+                    reviews[1] = new Review("","");
+                    reviews[2] = new Review("","");
+                }
             }
-        }
-        catch(SAXException e){
+        } catch (SAXException e) {
             System.out.println("SAXException");
-        }
-        catch(IOException e)
-        {
+        } catch (IOException e) {
             System.out.println("IOException");
-        }
-        catch(ParserConfigurationException e)
-        {
+        } catch (ParserConfigurationException e) {
             System.out.println("ParserConfigurationException");
         }
+
     }
 
     public Boolean checkErrorNode(Node node)

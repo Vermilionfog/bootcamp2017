@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Mon Jul 24 13:52:24 JST 2017
+#Mon Jul 24 17:19:48 JST 2017
 210.set=ANDROID_RESOURCE
 14.set=ANDROID_RESOURCE
 180.file=/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/res/resources-debug.ap_/res/drawable-mdpi-v4/yutori.png
