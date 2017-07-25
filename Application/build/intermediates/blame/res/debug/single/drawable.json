@@ -8,6 +8,10 @@
         "source": "/Users/usr0301385/.android/build-cache/3c13e857920ee84073a9979ef030568917043780/output/res/drawable/abc_ic_ab_back_material.xml"
     },
     {
+        "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/res/merged/debug/drawable/flame_style_background_white.xml",
+        "source": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/src/main/res/drawable/flame_style_background_white.xml"
+    },
+    {
         "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\usr0301385\\Bootcamp\\Bootcamp2017\\bootcamp2017\\Application\\build\\intermediates\\res\\merged\\debug\\drawable\\notification_bg_low.xml",
         "source": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\usr0301385\\.android\\build-cache\\3c13e857920ee84073a9979ef030568917043780\\output\\res\\drawable\\notification_bg_low.xml"
     },

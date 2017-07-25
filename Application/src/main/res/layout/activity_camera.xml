@@ -22,4 +22,18 @@
     android:theme="@style/Theme.AppCompat"
     tools:context="com.example.android.camera2basic.CameraActivity" >
 
+    <android.support.v4.view.ViewPager
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <android.support.v4.view.PagerTitleStrip
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:background="#CCCCCC"
+            android:textColor="#000000"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"/>
+    </android.support.v4.view.ViewPager>
 </FrameLayout>

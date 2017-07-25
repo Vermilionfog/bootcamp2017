@@ -103,7 +103,6 @@ public class Product {
 
     public void getProductForXML(String amazon_xml)
     {
-        System.out.println("GETPRODU");
         System.out.println(amazon_xml);
         try {
             // 取得できているかを確認
@@ -158,7 +157,11 @@ public class Product {
             System.out.println("IOException");
         } catch (ParserConfigurationException e) {
             System.out.println("ParserConfigurationException");
+        } catch (Exception e)
+        {
+            System.out.println("Exception");
         }
+
 
     }
 
@@ -243,28 +246,31 @@ public class Product {
                 org.jsoup.nodes.Document doc = Jsoup.parse(iFrameHTML);
                 // レビューが書かれているテーブルを取得
 
-                Elements review_1 = doc.select("body > div.crIFrame > div.crIframeReviewList > table > tbody > tr > td > div:nth-child(3)");
-                if(review_1 != null)
+                Elements reviewTitle_1 = doc.select("body > div.crIFrame > div.crIframeReviewList > table > tbody > tr > td > div:nth-child(3)");
+                if(reviewTitle_1 != null)
                 {
                     title = doc.select("body > div.crIFrame > div.crIframeReviewList > table > tbody > tr > td > div:nth-child(3) > div > b").text();
                     text = doc.select("body > div.crIFrame > div.crIframeReviewList > table > tbody > tr > td > div:nth-child(3) > div.reviewText").text();
+                    title = title.split("レビュー対象商品")[0];
                     reviews[0].title = title;
                     reviews[0].text = text;
                     System.out.println(title);
                 }
-                Elements review_2 = doc.select("body > div.crIFrame > div.crIframeReviewList > table > tbody > tr > td > div:nth-child(6)");
-                if(review_1 != null)
+                Elements reviewTitle_2 = doc.select("body > div.crIFrame > div.crIframeReviewList > table > tbody > tr > td > div:nth-child(6)");
+                if(reviewTitle_1 != null)
                 {
                     title = doc.select("body > div.crIFrame > div.crIframeReviewList > table > tbody > tr > td > div:nth-child(6) > div > b").text();
                     text = doc.select("body > div.crIFrame > div.crIframeReviewList > table > tbody > tr > td > div:nth-child(6) > div.reviewText").text();
+                    title = title.split("レビュー対象商品")[0];
                     reviews[1].title = title;
                     reviews[1].text = text;
                 }
-                Elements review_3 = doc.select("body > div.crIFrame > div.crIframeReviewList > table > tbody > tr > td > div:nth-child(9)");
-                if(review_1 != null)
+                Elements reviewTitle_3 = doc.select("body > div.crIFrame > div.crIframeReviewList > table > tbody > tr > td > div:nth-child(9)");
+                if(reviewTitle_1 != null)
                 {
                     title = doc.select("body > div.crIFrame > div.crIframeReviewList > table > tbody > tr > td > div:nth-child(9) > div > b").text();
                     text = doc.select("body > div.crIFrame > div.crIframeReviewList > table > tbody > tr > td > div:nth-child(9) > div.reviewText").text();
+                    title = title.split("レビュー対象商品")[0];
                     reviews[2].title = title;
                     reviews[2].text = text;
                 }
