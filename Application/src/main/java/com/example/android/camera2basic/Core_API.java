@@ -164,6 +164,7 @@ public class Core_API extends AsyncTask<String, Void, String> {
     public static String AmazonAPI_Req(String Keywords){
         TreeMap<String,String> kwargs = new TreeMap<String,String>();
 
+        //ここにアクセスキーやシークレットキーを入力するコードを追加して利用する。
 
         //add Timestamp
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'");

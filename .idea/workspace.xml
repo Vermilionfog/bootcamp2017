@@ -168,11 +168,12 @@
       <file leaf-file-name="Core_API.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Application/src/main/java/com/example/android/camera2basic/Core_API.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="354">
+            <state relative-caret-position="150">
               <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
               <folding>
                 <element signature="e#1565#1566#0" expanded="true" />
                 <element signature="e#1614#1615#0" expanded="true" />
+                <element signature="e#5647#5662#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -2858,11 +2859,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Application/src/main/java/com/example/android/camera2basic/Core_API.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="354">
+        <state relative-caret-position="150">
           <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
           <folding>
             <element signature="e#1565#1566#0" expanded="true" />
             <element signature="e#1614#1615#0" expanded="true" />
+            <element signature="e#5647#5662#0" expanded="true" />
           </folding>
         </state>
       </provider>
