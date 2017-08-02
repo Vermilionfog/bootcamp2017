@@ -1,22 +1,34 @@
 [
     {
-        "merged": "C:\\Users\\usr0301385\\Bootcamp\\Bootcamp2017\\bootcamp2017\\Application\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\ic_launcher.png",
-        "source": "C:\\Users\\usr0301385\\Bootcamp\\Bootcamp2017\\bootcamp2017\\Application\\src\\main\\res\\drawable-mdpi\\ic_launcher.png"
+        "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/res/merged/debug/drawable-mdpi/ic_launcher.png",
+        "source": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/src/main/res/drawable-mdpi/ic_launcher.png"
     },
     {
-        "merged": "C:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\yutori.png",
-        "source": "C:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\src\\main\\res\\drawable-mdpi\\yutori.png"
+        "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\ic_action_info.png",
+        "source": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\src\\main\\res\\drawable-mdpi\\ic_action_info.png"
     },
     {
-        "merged": "C:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\ic_launcher.png",
-        "source": "C:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\src\\main\\res\\drawable-mdpi\\ic_launcher.png"
+        "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/res/merged/debug/drawable-mdpi/ic_action_info.png",
+        "source": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/src/main/res/drawable-mdpi/ic_action_info.png"
     },
     {
-        "merged": "C:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\ic_action_info.png",
-        "source": "C:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\src\\main\\res\\drawable-mdpi\\ic_action_info.png"
+        "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\usr0301385\\Bootcamp\\Bootcamp2017\\bootcamp2017\\Application\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\ic_action_info.png",
+        "source": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\usr0301385\\Bootcamp\\Bootcamp2017\\bootcamp2017\\Application\\src\\main\\res\\drawable-mdpi\\ic_action_info.png"
     },
     {
-        "merged": "C:\\Users\\usr0301385\\Bootcamp\\Bootcamp2017\\bootcamp2017\\Application\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\ic_action_info.png",
-        "source": "C:\\Users\\usr0301385\\Bootcamp\\Bootcamp2017\\bootcamp2017\\Application\\src\\main\\res\\drawable-mdpi\\ic_action_info.png"
+        "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\usr0301385\\Bootcamp\\Bootcamp2017\\bootcamp2017\\Application\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\ic_launcher.png",
+        "source": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\usr0301385\\Bootcamp\\Bootcamp2017\\bootcamp2017\\Application\\src\\main\\res\\drawable-mdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\yutori.png",
+        "source": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\src\\main\\res\\drawable-mdpi\\yutori.png"
+    },
+    {
+        "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/res/merged/debug/drawable-mdpi/yutori.png",
+        "source": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/src/main/res/drawable-mdpi/yutori.png"
+    },
+    {
+        "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\ic_launcher.png",
+        "source": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\src\\main\\res\\drawable-mdpi\\ic_launcher.png"
     }
 ]

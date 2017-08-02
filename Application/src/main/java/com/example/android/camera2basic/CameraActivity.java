@@ -24,20 +24,26 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.Matrix;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v13.app.ActivityCompat;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Base64;
 import android.view.TextureView;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.ToggleButton;
@@ -47,7 +53,7 @@ import java.io.File;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class CameraActivity extends Activity {
+public class CameraActivity extends FragmentActivity {
 
     // 表示するデータ
     public Timer sendImageTimer ;
@@ -58,9 +64,12 @@ public class CameraActivity extends Activity {
     public TextureView cameraView;
 
     // データを乗せるTextViewやRatingBarなど
-    public TextView review_1;
-    public TextView review_2;
-    public TextView review_3;
+    public TextView reviewTitle_1;
+    public TextView reviewTitle_2;
+    public TextView reviewTitle_3;
+    public TextView reviewText_1;
+    public TextView reviewText_2;
+    public TextView reviewText_3;
 
     public RatingBar rating;
     public TextView price;
@@ -69,13 +78,22 @@ public class CameraActivity extends Activity {
     // 各種ボタン
     public ImageButton amazonButton;
     public ToggleButton fixButton;
+    public ImageButton moveFavoriteList;
 
     public Boolean initFlag = false; //ビューの初期化が行われていればTrueに。非同期処理の関係で、初期化の可否を確認するフラグが必要であった為追加。
     public Boolean fixFlag = false; // 更新せず固定するフラグ
 
+    //デバッグ用
+    public TextView recognitionText;
+    public ImageView sendImageView;
+
+    // タイマーの残り時間確認
+    public ProgressBar sendImageProgress;
+
     // APIの実行結果
     private String APIResult = "";
 
+    ViewPager viewPager;
     //public ImageView productImage;
 
     @Override
@@ -88,20 +106,39 @@ public class CameraActivity extends Activity {
                     .add(R.id.container, Camera2BasicFragment.newInstance())
                     .commit();
         }
+
+//        viewPager = (ViewPager)findViewById(R.id.viewPager);
+//        viewPager.setAdapter(new MyFragmentStatePagerAdapter(getSupportFragmentManager()));
+        // カスタム PagerAdapter を生成
+//        MyPagerAdapter adapter = new MyPagerAdapter(this);
+//        adapter.add(Color.BLACK);
+//        adapter.add(Color.RED);
+//        adapter.add(Color.GREEN);
+//        adapter.add(Color.BLUE);
+//        adapter.add(Color.CYAN);
+//        adapter.add(Color.MAGENTA);
+//        adapter.add(Color.YELLOW);
+//
+//        // ViewPager を生成
+//        ViewPager viewPager = new ViewPager(this);
+//        viewPager.setAdapter(adapter);
+
+//        setContentView(viewPager);
+
+
         sendImageTimer = new Timer();
         displayReloadTimer = new Timer();
         fixMediaDir();
-        displayProduct = new Product();
-        sendImageTimer();
-        setResultTimer();
+        displayProduct = new Product(this);
+
     }
 
     @Override
     protected void onStart()
     {
         super.onStart();
-        System.out.println("ONSTART");
         getObjects();
+        sendImageTimer();
     }
 
 
@@ -111,35 +148,61 @@ public class CameraActivity extends Activity {
     {
         // オブジェクトを取得し保存
         cameraView = (TextureView) findViewById(R.id.texture);
-        review_1 = (TextView) findViewById(R.id.reviewView_1);
-        review_2 = (TextView) findViewById(R.id.reviewView_2);
-        review_3 = (TextView) findViewById(R.id.reviewView_3);
+        reviewTitle_1 = (TextView) findViewById(R.id.reviewTitle_1);
+        reviewTitle_2 = (TextView) findViewById(R.id.reviewTitle_2);
+        reviewTitle_3 = (TextView) findViewById(R.id.reviewTitle_3);
+        reviewText_1 = (TextView) findViewById(R.id.reviewText_1);
+        reviewText_2 = (TextView) findViewById(R.id.reviewText_2);
+        reviewText_3 = (TextView) findViewById(R.id.reviewText_3);
         rating = (RatingBar) findViewById(R.id.ratingBar);
         price = (TextView) findViewById(R.id.price);
         name = (TextView) findViewById(R.id.name);
 
         amazonButton = (ImageButton) findViewById(R.id.linkToAmazon);
         fixButton = (ToggleButton) findViewById(R.id.fixButton);
+        moveFavoriteList = (ImageButton) findViewById(R.id.moveFavoriteList);
+
+        //デバッグ用
+        recognitionText = (TextView)findViewById(R.id.recognitionText);
+        sendImageView = (ImageView)findViewById(R.id.sendImageView);
+
+        //タイマーの進捗
+        sendImageProgress = (ProgressBar)findViewById(R.id.sendImageProgress);
 
         // 行数指定などの細かい設定
         setTextViewOption(name, TextUtils.TruncateAt.MARQUEE);
-        setTextViewOption(review_1, TextUtils.TruncateAt.END);
-        setTextViewOption(review_2, TextUtils.TruncateAt.END);
-        setTextViewOption(review_3, TextUtils.TruncateAt.END);
+        setTextViewOption(reviewTitle_1, TextUtils.TruncateAt.END);
+        setTextViewOption(reviewTitle_2, TextUtils.TruncateAt.END);
+        setTextViewOption(reviewTitle_3, TextUtils.TruncateAt.END);
+        setVerticalScrollOption(reviewText_1);
+        setVerticalScrollOption(reviewText_2);
+        setVerticalScrollOption(reviewText_3);
 
         // イベント設定、これらも本来はOnCreateでやる処理だが、そちらだとオブジェクトが取得出来ない為こちらで定義。
         setEventListnerTolinkToAmazonButton();
         setEventListnerToFavoriteButton();
         setEventListnerToFixButton();
+        setEventListnerTolinkToMoveFavoriteListButton();
 
         initFlag = true;
+    }
+
+    private void setEventListnerTolinkToMoveFavoriteListButton() {
+        moveFavoriteList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            Intent intent = new Intent(getApplication(), FavoriteActivity.class);
+            startActivity(intent);
+            }
+        });
     }
 
 
     // Timerを定義する。 実行内容はsendImageメソッド
     public void sendImageTimer(){
         TimerTask timerTask = new SendImageTimer(this);
-        sendImageTimer.scheduleAtFixedRate(timerTask, 0, 5000);
+        //ProgressBarとの兼ね合いでここは固定で10msec単位、 実行感覚はSendImageTimerクラスの中で決める。
+        sendImageTimer.scheduleAtFixedRate(timerTask, 0, 10);
     }
 
     public void setResultTimer(){
@@ -150,6 +213,18 @@ public class CameraActivity extends Activity {
     //お気に入りボタンにイベントを追加設定する
     public void setEventListnerToFavoriteButton()
     {
+        // お気に入りの状態を変更する
+        displayProduct.favorite = !displayProduct.favorite;
+
+        if(displayProduct.favorite)
+        {
+            //お気に入りに追加する
+        }
+        else
+        {
+            //お気に入りから削除する
+        }
+
         // お気に入りボタンをクリックした時、現在表示中の商品をお気に入り登録する
         // お気に入りボタンを表示を変更する
         // 後でお気に入り一覧を確認する為、DBに登録する。
@@ -202,6 +277,7 @@ public class CameraActivity extends Activity {
 
     public void setDisplayData()
     {
+        System.out.println(APIResult);
         displayProduct.getProductForXML(APIResult);
     }
 
@@ -213,24 +289,53 @@ public class CameraActivity extends Activity {
         target.setEllipsize(truncate);
     }
 
+    public void setVerticalScrollOption(TextView target)
+    {
+        target.setMovementMethod(ScrollingMovementMethod.getInstance());
+    }
+
     // TextureViewに設定されている画像を引数として、APIに画像を送る関数を呼び出す
     public void sendImage()
     {
+        long start = System.currentTimeMillis();
         if(initFlag && (!fixFlag) && cameraView.getBitmap() != null)
         {
-            System.out.println("SENDIMAGE");
-            //テスト用bitmp
-//            Resources r = getResources();
-//            Bitmap bmp = BitmapFactory.decodeResource(r, R.drawable.yutori);
-//            String img_base64 = BMP_to_Base64(bmp);
+            long convert_start = System.currentTimeMillis();
 
             // 本番用、カメラからbmp取得
-            String img_base64 = BMP_to_Base64(cameraView.getBitmap());
+            Bitmap bmp = cameraView.getBitmap();
+
+            // 作られたサムネイルから横幅とそれに応じた高さを指定
+            int dispWidth = bmp.getWidth();
+            int dispHeight = bmp.getHeight();
+            Matrix matrix = new Matrix();
+            matrix.postScale(0.2f, 0.2f);
+            // 元のサイズでBitmap作成
+            bmp = Bitmap.createBitmap(bmp, 0, 0, dispWidth, dispHeight, matrix, true);
+            String img_base64 = BMP_to_Base64(bmp);
+
             // APIクラス
+//            setSendImageView(bmp);
             Core_API APIs = new Core_API(this);
             APIs.execute(img_base64);
         }
+
+        long end = System.currentTimeMillis();
+        System.out.println("SendImage " + (end-start) + "ms");
     }
+
+    public void setSendImageView(Bitmap bmp)
+    {
+        final Bitmap view_bmp = bmp;
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                sendImageView.setImageBitmap(view_bmp);
+                // mTextView.setVisibility(View.VISIBLE);
+            }
+        });
+    }
+
 
     public void displayReload()
     {
@@ -244,6 +349,7 @@ public class CameraActivity extends Activity {
 
     public void setResult()
     {
+        long start = System.currentTimeMillis();
         // 以前確認していた商品と同一名でなければ、表示されるデータを更新する。
         // この処理を挟まない場合
         if(!name.getText().equals(displayProduct.name))
@@ -255,26 +361,30 @@ public class CameraActivity extends Activity {
         }
         // ReviewとRatingは非同期処理の関係で、データを取得出来るタイミングが僅かに異なる為別に分ける。
         // 分けない場合、レビューは更新されていないが、名称は更新されているという状態になり
-        if(!review_1.getText().equals(displayProduct.reviews[0].title))
+        if(!reviewTitle_1.getText().equals(displayProduct.reviews[0].title))
         {
             setRating();
             setReviews();
         }
+        long end = System.currentTimeMillis();
+        System.out.println("SetResult " + (end-start) + "ms");
 
     }
 
     public void setImage()
     {
         GetBitmap task = new GetBitmap(this);
-        System.out.println(displayProduct.imageURL);
         task.execute(displayProduct.imageURL);
     }
 
     public void setReviews()
     {
-        review_1.setText(displayProduct.reviews[0].title);
-        review_2.setText(displayProduct.reviews[1].title);
-        review_3.setText(displayProduct.reviews[2].title);
+        reviewTitle_1.setText(displayProduct.reviews[0].title);
+        reviewTitle_2.setText(displayProduct.reviews[1].title);
+        reviewTitle_3.setText(displayProduct.reviews[2].title);
+        reviewText_1.setText(displayProduct.reviews[0].text);
+        reviewText_2.setText(displayProduct.reviews[1].text);
+        reviewText_3.setText(displayProduct.reviews[2].text);
     }
 
     public void setRating()
@@ -284,25 +394,17 @@ public class CameraActivity extends Activity {
 
     public void setPrice()
     {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                price.setText("¥" + displayProduct.price);
-            }
-        });
-        System.out.println(displayProduct.price);
-
+        price.setText("¥" + displayProduct.price);
     }
 
     public void setName() {
+        System.out.println(displayProduct.name);
         name.setText(displayProduct.name);
     }
 
     public void resetButton()
     {
         // URLが何も入っていない時、Amazonへのリンクを非アクティブにする
-        System.out.println(displayProduct.getClass());
-        System.out.println(displayProduct.amazonURL.getClass());
         if(displayProduct.amazonURL.equals("")) {
             amazonButton.setActivated(false);
         }
@@ -403,8 +505,12 @@ public class CameraActivity extends Activity {
 
     public void setAPIResult(String result)
     {
-        System.out.println(result);
         APIResult = result;
+    }
+
+    public void setRecognitionText(String text)
+    {
+        recognitionText.setText(text);
     }
 
 }

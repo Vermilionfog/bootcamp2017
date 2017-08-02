@@ -31,7 +31,9 @@ public class Product {
     public static String iFrameUrl;
     public static String iFrameHTML; // レビューや評価点数の書いてあるHTMLファイル。 ASyncを利用する為に事前に定義しておく。
 
-    public Product(String _name, Integer _price, Review[] _reviews, Float _rating, String _imageURL, String _amazonURL)
+    public static CameraActivity activity;
+
+    public Product(String _name, Integer _price, Review[] _reviews, Float _rating, String _imageURL, String _amazonURL, CameraActivity activity)
     {
         name = _name;
         price = _price;
@@ -39,21 +41,21 @@ public class Product {
         rating = _rating;
         imageURL = _imageURL;
         amazonURL = _amazonURL;
-
+        this.activity = activity;
         setStaticVar();
     }
 
     // Amazon APIから帰ってきた情報を使ってデータを格納する場合
-    public Product(String _amazon_xml)
+    public Product(String _amazon_xml, CameraActivity activity)
     {
         System.out.println("Product");
         reviews = new Review[3];
         getProductForXML(_amazon_xml);
-
+        this.activity = activity;
         setStaticVar();
     }
 
-    public Product()
+    public Product(CameraActivity activity)
     {
         name = "";
         price = 0;
@@ -62,8 +64,9 @@ public class Product {
         reviews[1] = new Review("","");
         reviews[2] = new Review("","");
         rating = 0f;
-        imageURL = "https://images-na.ssl-images-amazon.com/images/I/51c061aHw4L.jpg";
+        imageURL = "http://shironekochannel.com/wp-content/uploads/2016/08/no-error-sign-md.png";
         amazonURL = "";
+        this.activity = activity;
 
         setStaticVar();
     }
@@ -100,10 +103,11 @@ public class Product {
 
     public void getProductForXML(String amazon_xml)
     {
-        try{
-
-            if(amazon_xml.length() > 0) {
-                System.out.println(amazon_xml);
+        System.out.println(amazon_xml);
+        try {
+            // 取得できているかを確認
+            if (amazon_xml.length() > 0) {
+                //System.out.println(amazon_xml);
                 InputSource inputSource = new InputSource(new StringReader(amazon_xml));
 
                 //DOMを使うためのインスタンス取得
@@ -112,46 +116,70 @@ public class Product {
                 Element root = document.getDocumentElement();
 
                 // Itemノード(一番上の商品)を取得
-                Node item = getChildNodeByNodeName(root.getLastChild(), "Item");
-                Node itemAttributes = getChildNodeByNodeName(item, "ItemAttributes");
-                Node mediumImage = getChildNodeByNodeName(getChildNodeByNodeName(item, "ImageSets").getFirstChild(), "MediumImage");
+                Node items = root.getLastChild();
 
-                if (!name.equals(getChildNodeByNodeName(itemAttributes, "Title").getTextContent())) {
-                    name = getChildNodeByNodeName(itemAttributes, "Title").getTextContent();
-                    price = Integer.parseInt(getChildNodeByNodeName(item, "OfferSummary").getFirstChild().getFirstChild().getTextContent());
-                    imageURL = getChildNodeByNodeName(mediumImage, "URL").getTextContent();
-                    amazonURL = getChildNodeByNodeName(item, "DetailPageURL").getTextContent();
+                if (checkErrorNode(items)) {
+                    Node item = getChildNodeByNodeName(items, "Item");
+                    Node itemAttributes = getChildNodeByNodeName(item, "ItemAttributes");
+                    Node mediumImage = getChildNodeByNodeName(getChildNodeByNodeName(item, "ImageSets").getFirstChild(), "MediumImage");
+
+                    if (!name.equals(getChildNodeByNodeName(itemAttributes, "Title").getTextContent())) {
+                        name = getChildNodeByNodeName(itemAttributes, "Title").getTextContent();
+                        price = Integer.parseInt(getChildNodeByNodeName(item, "OfferSummary").getFirstChild().getFirstChild().getTextContent());
+                        imageURL = getChildNodeByNodeName(mediumImage, "URL").getTextContent();
+                        amazonURL = getChildNodeByNodeName(item, "DetailPageURL").getTextContent();
+                    }
+
+                    String nextIFrameURL = getChildNodeByNodeName(item, "CustomerReviews").getFirstChild().getTextContent();
+                    if (!iFrameUrl.equals(nextIFrameURL) || reviews[0].title.equals("")) {
+                        // iFrameUrl = レビューや評価点数が書かれたHTMLのURLを取得
+                        iFrameUrl = nextIFrameURL;
+                        // iFrameHTMLにレビューや評価点数が書かれたHTMLを格納する。
+                        getHTML(iFrameUrl);
+                        // GetHTMLの中でsetDataByHtml()を呼び出して評価やレビューを取得している
+                    }
                 }
-
-                String nextIFrameURL = getChildNodeByNodeName(item, "CustomerReviews").getFirstChild().getTextContent();
-
-                if (!iFrameUrl.equals(nextIFrameURL) || reviews[0].title.equals("")) {
-                    // iFrameUrl = レビューや評価点数が書かれたHTMLのURLを取得
-                    iFrameUrl = nextIFrameURL;
-                    // iFrameHTMLにレビューや評価点数が書かれたHTMLを格納する。
-                    getHTML(iFrameUrl);
-                    // GetHTMLの中でsetDataByHtml()を呼び出して評価やレビューを取得している
+                else
+                {
+                    name = "エラー : 読み取れませんでした";
+                    price = 0;
+                    imageURL ="http://shironekochannel.com/wp-content/uploads/2016/08/no-error-sign-md.png";
+                    amazonURL = "";
+                    rating = 0f;
+                    reviews[0] = new Review("文字が出来るだけ中央に来るようにしてください","");
+                    reviews[1] = new Review("","");
+                    reviews[2] = new Review("","");
                 }
             }
-
-        }
-        catch(SAXException e){
+        } catch (SAXException e) {
             System.out.println("SAXException");
-        }
-        catch(IOException e)
-        {
+        } catch (IOException e) {
             System.out.println("IOException");
-        }
-        catch(ParserConfigurationException e)
-        {
+        } catch (ParserConfigurationException e) {
             System.out.println("ParserConfigurationException");
+        } catch (Exception e)
+        {
+            System.out.println("Exception");
         }
+
+
+    }
+
+    public Boolean checkErrorNode(Node node)
+    {
+        Node errors = getChildNodeByNodeName(getChildNodeByNodeName(node,"Request"), "Errors");
+        if(errors == null) {
+            return true;
+        }
+        return false;
     }
 
 
     // parentの子ノードの中から、nodenameと等しいノード名を持つノードを返却する
     public Node getChildNodeByNodeName(Node parent, String nodename)
     {
+        if(parent == null)
+            return null;
         NodeList childs = parent.getChildNodes();
         int i = 0;
         while(i < childs.getLength())
@@ -163,7 +191,6 @@ public class Product {
             }
             i++;
         }
-        System.out.println("NULL");
         return null;
     }
 
@@ -187,15 +214,14 @@ public class Product {
         // 過剰なアクセスなどでAmazonに繋がらなくなった場合、エラーで実行出来なくなる。
         try {
             if (iFrameHTML != null) {
-                System.out.println("getRatingByHtml");
                 // org.w3c.dom.Document と重複する為、org~から記述
                 org.jsoup.nodes.Document doc = Jsoup.parse(iFrameHTML);
-
-                Integer rating_five = Integer.parseInt(doc.select("div.histoRowfive > a > div.histoCount").text());
-                Integer rating_four = Integer.parseInt(doc.select("div.histoRowfour > a > div.histoCount").text());
-                Integer rating_three = Integer.parseInt(doc.select("div.histoRowthree > a > div.histoCount").text());
-                Integer rating_two = Integer.parseInt(doc.select("div.histoRowtwo > a > div.histoCount").text());
-                Integer rating_one = Integer.parseInt(doc.select("div.histoRowone > div.histoCount").text());
+                //数値が0の場合は、 histoRowfive と div.histoCount の間にaが入らない
+                Integer rating_five = Integer.parseInt(doc.select("div.histoRowfive div.histoCount").text());
+                Integer rating_four = Integer.parseInt(doc.select("div.histoRowfour div.histoCount").text());
+                Integer rating_three = Integer.parseInt(doc.select("div.histoRowthree div.histoCount").text());
+                Integer rating_two = Integer.parseInt(doc.select("div.histoRowtwo div.histoCount").text());
+                Integer rating_one = Integer.parseInt(doc.select("div.histoRowone div.histoCount").text());
                 Integer sum = (rating_five * 5) + (rating_four * 4) + (rating_three * 3) + (rating_two * 2) + (rating_one);
                 Integer count = rating_five + rating_four + rating_three + rating_two + rating_one;
                 rating = (Float) sum.floatValue()/count.floatValue();
@@ -220,28 +246,31 @@ public class Product {
                 org.jsoup.nodes.Document doc = Jsoup.parse(iFrameHTML);
                 // レビューが書かれているテーブルを取得
 
-                Elements review_1 = doc.select("body > div.crIFrame > div.crIframeReviewList > table > tbody > tr > td > div:nth-child(3)");
-                if(review_1 != null)
+                Elements reviewTitle_1 = doc.select("body > div.crIFrame > div.crIframeReviewList > table > tbody > tr > td > div:nth-child(3)");
+                if(reviewTitle_1 != null)
                 {
                     title = doc.select("body > div.crIFrame > div.crIframeReviewList > table > tbody > tr > td > div:nth-child(3) > div > b").text();
                     text = doc.select("body > div.crIFrame > div.crIframeReviewList > table > tbody > tr > td > div:nth-child(3) > div.reviewText").text();
-                    System.out.println(title);
+                    title = title.split("レビュー対象商品")[0];
                     reviews[0].title = title;
                     reviews[0].text = text;
+                    System.out.println(title);
                 }
-                Elements review_2 = doc.select("body > div.crIFrame > div.crIframeReviewList > table > tbody > tr > td > div:nth-child(6)");
-                if(review_1 != null)
+                Elements reviewTitle_2 = doc.select("body > div.crIFrame > div.crIframeReviewList > table > tbody > tr > td > div:nth-child(6)");
+                if(reviewTitle_1 != null)
                 {
                     title = doc.select("body > div.crIFrame > div.crIframeReviewList > table > tbody > tr > td > div:nth-child(6) > div > b").text();
                     text = doc.select("body > div.crIFrame > div.crIframeReviewList > table > tbody > tr > td > div:nth-child(6) > div.reviewText").text();
+                    title = title.split("レビュー対象商品")[0];
                     reviews[1].title = title;
                     reviews[1].text = text;
                 }
-                Elements review_3 = doc.select("body > div.crIFrame > div.crIframeReviewList > table > tbody > tr > td > div:nth-child(9)");
-                if(review_1 != null)
+                Elements reviewTitle_3 = doc.select("body > div.crIFrame > div.crIframeReviewList > table > tbody > tr > td > div:nth-child(9)");
+                if(reviewTitle_1 != null)
                 {
                     title = doc.select("body > div.crIFrame > div.crIframeReviewList > table > tbody > tr > td > div:nth-child(9) > div > b").text();
                     text = doc.select("body > div.crIFrame > div.crIframeReviewList > table > tbody > tr > td > div:nth-child(9) > div.reviewText").text();
+                    title = title.split("レビュー対象商品")[0];
                     reviews[2].title = title;
                     reviews[2].text = text;
                 }
@@ -252,7 +281,6 @@ public class Product {
             reviews[0] = new Review("", "");
             reviews[1] = new Review("", "");
             reviews[2] = new Review("", "");
-            System.out.println("Reviews : Exception");
         }
     }
 

@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "C:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-h720dp-v13\\values-h720dp-v13.xml",
+        "outputFile": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\usr0301385\\Bootcamp\\Bootcamp2017\\bootcamp2017\\Application\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-h720dp-v13\\values-h720dp-v13.xml",
         "map": [
             {
                 "to": {
@@ -11,7 +11,7 @@
                     "endOffset": 117
                 },
                 "from": {
-                    "file": "C:\\Users\\Yoshiki\\.android\\build-cache\\b5500c90d5f9f2d3a6d12c1bb2021c9a2ca42a5c\\output\\res\\values-h720dp-v13\\values-h720dp-v13.xml",
+                    "file": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\usr0301385\\.android\\build-cache\\3c13e857920ee84073a9979ef030568917043780\\output\\res\\values-h720dp-v13\\values-h720dp-v13.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -24,7 +24,7 @@
         ]
     },
     {
-        "outputFile": "C:\\Users\\usr0301385\\Bootcamp\\Bootcamp2017\\bootcamp2017\\Application\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-h720dp-v13\\values-h720dp-v13.xml",
+        "outputFile": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/incremental/mergeDebugResources/merged.dir/values-h720dp-v13/values-h720dp-v13.xml",
         "map": [
             {
                 "to": {
@@ -35,7 +35,31 @@
                     "endOffset": 117
                 },
                 "from": {
-                    "file": "C:\\Users\\usr0301385\\.android\\build-cache\\3c13e857920ee84073a9979ef030568917043780\\output\\res\\values-h720dp-v13\\values-h720dp-v13.xml",
+                    "file": "/Users/usr0301385/.android/build-cache/3c13e857920ee84073a9979ef030568917043780/output/res/values-h720dp-v13/values-h720dp-v13.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 66,
+                        "endOffset": 117
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-h720dp-v13\\values-h720dp-v13.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 66,
+                    "endOffset": 117
+                },
+                "from": {
+                    "file": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\Yoshiki\\.android\\build-cache\\b5500c90d5f9f2d3a6d12c1bb2021c9a2ca42a5c\\output\\res\\values-h720dp-v13\\values-h720dp-v13.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
