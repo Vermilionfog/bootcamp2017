@@ -61,7 +61,7 @@ public class Core_API extends AsyncTask<String, Void, String> {
     protected static String Google_Cloud_Vision_API(String img_base64) throws IOException, JSONException {
 
         String USER_AGENT = "Mozilla/5.0";
-        String url = "";
+
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
@@ -163,8 +163,6 @@ public class Core_API extends AsyncTask<String, Void, String> {
     //==========Make Amazon Request======================================
     public static String AmazonAPI_Req(String Keywords){
         TreeMap<String,String> kwargs = new TreeMap<String,String>();
-
-        //ここにアクセスキーやシークレットキーを入力するコードを追加して利用する。
 
 
         //add Timestamp
