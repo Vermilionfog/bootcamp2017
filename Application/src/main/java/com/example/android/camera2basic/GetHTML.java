@@ -28,13 +28,16 @@ public class GetHTML extends AsyncTask<String, Void, String> {
             URLConnection conn = url.openConnection();
             System.out.println("GetHTML doInBackground Start");
             BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            System.out.println("GH 1");
             StringBuffer response = new StringBuffer();
+            System.out.println("GH 2");
             String line;
-
+            System.out.println("GH 3");
+            // ここは一瞬
             while ((line = in.readLine()) != null) {
-                //System.out.println("GetHTML doInBackground Roop");
                 response.append(line + "\n");
             }
+            System.out.println("GH 4");
             in.close();
             System.out.println("GetHTML doInBackground End");
             return response.toString();
@@ -54,7 +57,9 @@ public class GetHTML extends AsyncTask<String, Void, String> {
     protected void onPostExecute(String html) {
 
         product.iFrameHTML = html;
+        System.out.println("SET DATA BY HTML START");
         product.setDataByHtml();
+        System.out.println("SET DATA BY HTML END");
         product.activity.displayReload(false);
         return;
     }
