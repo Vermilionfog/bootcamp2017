@@ -283,9 +283,19 @@
       <file leaf-file-name="fragment_camera2_basic.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Application/src/main/res/layout-xlarge/fragment_camera2_basic.xml">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+            <state relative-caret-position="150">
+              <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+              <folding>
+                <element signature="e#1565#1566#0" expanded="true" />
+                <element signature="e#1614#1615#0" expanded="true" />
+                <element signature="e#5647#5662#0" expanded="true" />
+              </folding>
+=======
             <state relative-caret-position="0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
+>>>>>>> 7ced95e48758c026c4e86fdcd153c61b83b4ab56
             </state>
           </provider>
           <provider editor-type-id="android-designer2">
@@ -2995,6 +3005,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Application/src/main/java/com/example/android/camera2basic/Core_API.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="60">
           <caret line="216" column="0" selection-start-line="216" selection-start-column="0" selection-end-line="216" selection-end-column="0" />
           <folding>
@@ -3007,7 +3018,21 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+=======
+<<<<<<< HEAD
+        <state relative-caret-position="150">
+          <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+          <folding>
+            <element signature="e#1565#1566#0" expanded="true" />
+            <element signature="e#1614#1615#0" expanded="true" />
+            <element signature="e#5647#5662#0" expanded="true" />
+          </folding>
+=======
+        <state relative-caret-position="178">
+          <caret line="84" column="0" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
+>>>>>>> 651cbc018ffbef60a3021c061a3e8e99e41cb83e
           <folding />
+>>>>>>> 7ced95e48758c026c4e86fdcd153c61b83b4ab56
         </state>
       </provider>
       <provider editor-type-id="android-designer2">
