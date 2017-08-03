@@ -16,7 +16,7 @@ public class SendImageTimer extends TimerTask {
     public Product result;
     public ProgressBar sendImageProgress;
     public static int COUNT;
-    public static int RUN_COUNT = 8000;
+    public static int RUN_COUNT = 6000;
 
     public SendImageTimer(Context context) {
         System.out.println("SEND IMAGE TIMER");

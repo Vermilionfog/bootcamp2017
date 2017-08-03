@@ -24,6 +24,14 @@
         "source": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\src\\main\\res\\drawable-nodpi\\amazon_icon.png"
     },
     {
+        "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/res/merged/debug/drawable-nodpi/no_error_sign_md.png",
+        "source": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/src/main/res/drawable-nodpi/no_error_sign_md.png"
+    },
+    {
+        "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/build/intermediates/res/merged/debug/drawable-nodpi/list_icon.png",
+        "source": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/Application/src/main/res/drawable-nodpi/list_icon.png"
+    },
+    {
         "merged": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\build\\intermediates\\res\\merged\\debug\\drawable-nodpi\\favorite_on.png",
         "source": "/Users/usr0301385/Bootcamp/Bootcamp2017/bootcamp2017/C:\\Users\\Yoshiki\\AndroidStudioProjects\\android-Camera2Basic\\Application\\src\\main\\res\\drawable-nodpi\\favorite_on.png"
     },

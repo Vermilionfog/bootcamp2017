@@ -22,16 +22,21 @@ public class GetHTML extends AsyncTask<String, Void, String> {
     protected String doInBackground(String... page_url) {
         URL url;
         try {
+
             //アクセスしたいページpage_url
             url = new URL(page_url[0]);
             URLConnection conn = url.openConnection();
-
+            System.out.println("GetHTML doInBackground Start");
             BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
             StringBuffer response = new StringBuffer();
             String line;
-            while ((line = in.readLine()) != null)
+
+            while ((line = in.readLine()) != null) {
+                //System.out.println("GetHTML doInBackground Roop");
                 response.append(line + "\n");
+            }
             in.close();
+            System.out.println("GetHTML doInBackground End");
             return response.toString();
         }
         catch (IOException e) {
@@ -47,9 +52,10 @@ public class GetHTML extends AsyncTask<String, Void, String> {
      */
     @Override
     protected void onPostExecute(String html) {
+
         product.iFrameHTML = html;
         product.setDataByHtml();
-        product.activity.displayReload();
+        product.activity.displayReload(false);
         return;
     }
 }

@@ -22,6 +22,6 @@ public class ReloadTimer extends TimerTask {
     @Override
     public void run() {
 //        ((CameraActivity) context).getObjects();
-        ((CameraActivity) context).displayReload();
+        ((CameraActivity) context).displayReload(false);
     }
 }

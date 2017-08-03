@@ -31,9 +31,9 @@
         android:id="@+id/control"
         android:layout_width="match_parent"
         android:layout_height="220dp"
+        android:visibility="visible"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:visibility="visible">
+        android:layout_alignParentStart="true">
 
         <LinearLayout
             android:id="@+id/information"
@@ -43,162 +43,243 @@
             android:background="#ffffff"
             android:orientation="vertical">
 
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="@color/cardview_dark_background"
+                app:srcCompat="@color/cardview_dark_background" />
+
             <GridLayout
                 android:layout_width="match_parent"
-                android:layout_height="255dp">
+                android:layout_height="match_parent">
+
 
                 <LinearLayout
-                    android:id="@+id/linearLayout"
-                    android:layout_width="290dp"
+                    android:layout_width="305dp"
                     android:layout_height="match_parent"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_below="@+id/name"
                     android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/name"
-                        android:layout_width="282dp"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentTop="true"
-                        android:layout_centerHorizontal="true"
-                        android:text="ここにタイトルが表示されます"
-                        android:textAlignment="center"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
-                        android:typeface="normal"
-                        android:visibility="visible"
-                        tools:text="商品のタイトルです" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="20dp"
-                        android:orientation="horizontal"
-                        android:weightSum="1">
-
-                        <RatingBar
-                            android:id="@+id/ratingBar"
-                            style="@android:style/Widget.DeviceDefault.RatingBar.Small"
-                            android:layout_width="wrap_content"
-                            android:layout_height="21dp"
-                            android:layout_alignParentStart="true"
-                            android:layout_alignTop="@+id/price"
-                            android:maxHeight="36dp"
-                            android:minHeight="36dp"
-                            android:rating="5" />
-
-                        <TextView
-                            android:id="@+id/price"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentEnd="true"
-                            android:layout_centerVertical="true"
-                            android:layout_weight="0.96"
-                            android:gravity="right"
-                            android:text="¥0"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Button"
-                            android:textSize="16sp"
-                            tools:text="¥7777" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/reviews"
-                        android:layout_width="274dp"
-                        android:layout_height="188dp"
-                        android:layout_alignParentStart="true"
-                        android:layout_below="@+id/relativeLayout"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
                         android:orientation="vertical">
 
-                        <HorizontalScrollView
+                        <LinearLayout
+                            android:id="@+id/linearLayout"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="match_parent"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_below="@+id/name"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="16dp"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/textView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="casual"
+                                    android:text="商品名: "
+                                    android:textColor="@android:color/holo_red_light"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/name"
+                                    android:layout_width="191dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentTop="true"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_weight="1"
+                                    android:text="ここにタイトルが表示されます"
+                                    android:textAlignment="center"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold"
+                                    android:typeface="normal"
+                                    android:visibility="visible"
+                                    tools:text="商品のタイトルです" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="281dp"
+                                android:layout_height="20dp"
+                                android:orientation="horizontal"
+                                android:weightSum="1">
+
+                                <TextView
+                                    android:id="@+id/textView2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="casual"
+                                    android:text="評価点数:"
+                                    android:textColor="?android:attr/colorFocusedHighlight"
+                                    android:textStyle="bold" />
+
+                                <RatingBar
+                                    android:id="@+id/ratingBar"
+                                    style="@android:style/Widget.DeviceDefault.RatingBar.Small"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="21dp"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_alignTop="@+id/price"
+                                    android:layout_marginTop="10px"
+                                    android:maxHeight="36dp"
+                                    android:minHeight="36dp"
+                                    android:rating="5" />
+
+                                <TextView
+                                    android:id="@+id/blank"
+                                    android:layout_width="20dp"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="casual"
+                                    android:textColor="?android:attr/colorFocusedHighlight"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/textView3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="casual"
+                                    android:text="価格:"
+                                    android:textColor="?android:attr/colorFocusedHighlight"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/price"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginTop="5px"
+                                    android:layout_weight="0.17"
+                                    android:gravity="right"
+                                    android:text="¥0"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Button"
+                                    android:textSize="16sp"
+                                    tools:text="¥7777" />
+
+                            </LinearLayout>
 
                             <TextView
-                                android:id="@+id/reviewTitle_1"
-                                android:layout_width="wrap_content"
+                                android:id="@+id/review"
+                                android:layout_width="274dp"
                                 android:layout_height="wrap_content"
-                                android:layout_alignParentStart="true"
-                                android:layout_alignParentTop="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
                                 android:fontFamily="casual"
-                                android:text="タイトル1"
-                                android:textAlignment="viewStart"
-                                android:textColor="@android:color/black"
-                                android:textStyle="bold" />
+                                android:gravity="center"
+                                android:text="【Amazonレビュー】"
+                                android:textAlignment="center"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Button"
+                                android:textColor="@android:color/holo_red_light"
+                                android:textSize="16sp"
+                                tools:text="【Amazonレビュー】" />
 
-                        </HorizontalScrollView>
+                            <ScrollView
+                                android:layout_width="match_parent"
+                                android:layout_height="160dp">
+
+                                <LinearLayout
+                                    android:layout_width="300dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_below="@+id/relativeLayout"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/reviewTitle_1"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_alignParentTop="true"
+                                        android:fontFamily="casual"
+                                        android:text="レビュータイトル1"
+                                        android:textAlignment="viewStart"
+                                        android:textColor="@android:color/black"
+                                        android:textSize="18sp"
+                                        android:textStyle="bold" />
 
 
-
-                        <TextView
-                            android:id="@+id/reviewText_1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="40dp"
-                            android:fontFamily="casual"
-                            android:minLines="2"
-                            android:text="商品本文の説明文です、スクロールテスト用に長文になっています。ここから先も長文テスト用です............"
-                            android:textAlignment="viewStart"
-                            android:textColor="@android:color/background_dark" />
+                                    <TextView
+                                        android:id="@+id/reviewText_1"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="casual"
+                                        android:text="商品本文の説明文です、スクロールテスト用に長文になっています。ここから先も長文テスト用です。適当な文章が続きます。"
+                                        android:textAlignment="viewStart"
+                                        android:textColor="@android:color/background_dark" />
 
 
+                                    <TextView
+                                        android:id="@+id/reviewTitle_2"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_below="@+id/reviewTitle_1"
+                                        android:layout_marginTop="15px"
+                                        android:fontFamily="casual"
+                                        android:text="レビュータイトル2"
+                                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                                        android:textSize="18sp"
+                                        android:textStyle="bold"
+                                        tools:text="レビュータイトル2" />
 
-                        <HorizontalScrollView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                                    <TextView
+                                        android:id="@+id/reviewText_2"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="casual"
+                                        android:text="商品本文の説明文"
+                                        android:textColor="@android:color/background_dark" />
 
-                            <TextView
-                                android:id="@+id/reviewTitle_2"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentStart="true"
-                                android:layout_below="@+id/reviewTitle_1"
-                                android:fontFamily="casual"
-                                android:text="タイトル2"
-                                android:textAlignment="viewStart"
-                                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                                android:textColor="@android:color/black"
-                                android:textStyle="bold" />
-                        </HorizontalScrollView>
 
-                        <TextView
-                            android:id="@+id/reviewText_2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="40dp"
-                            android:fontFamily="casual"
-                            android:text="商品本文の説明文"
-                            android:textColor="@android:color/background_dark" />
+                                    <TextView
+                                        android:id="@+id/reviewTitle_3"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_below="@+id/reviewTitle_2"
+                                        android:layout_marginTop="15px"
+                                        android:fontFamily="casual"
+                                        android:text="レビュータイトル3"
+                                        android:textAlignment="viewStart"
+                                        android:textColor="@android:color/black"
+                                        android:textSize="18sp"
+                                        android:textStyle="bold" />
 
-                        <HorizontalScrollView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                                    <TextView
+                                        android:id="@+id/reviewText_3"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="casual"
+                                        android:text="商品本文の説明文"
+                                        android:textColor="@android:color/background_dark" />
 
-                            <TextView
-                                android:id="@+id/reviewTitle_3"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentStart="true"
-                                android:layout_below="@+id/reviewTitle_2"
-                                android:fontFamily="casual"
-                                android:text="タイトル3"
-                                android:textAlignment="viewStart"
-                                android:textColor="@android:color/black"
-                                android:textStyle="bold" />
-                        </HorizontalScrollView>
+                                </LinearLayout>
+                            </ScrollView>
 
-                        <TextView
-                            android:id="@+id/reviewText_3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="40dp"
-                            android:fontFamily="casual"
-                            android:text="商品本文の説明文"
-                            android:textColor="@android:color/background_dark" />
+                        </LinearLayout>
                     </LinearLayout>
 
                 </LinearLayout>
 
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="5dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/cardview_dark_background"
+                    app:srcCompat="@android:color/darker_gray" />
+
                 <LinearLayout
-                    android:layout_width="50dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10px"
                     android:orientation="vertical"
@@ -212,8 +293,9 @@
                         android:layout_below="@+id/reviews"
                         android:layout_marginTop="25px"
                         android:background="@drawable/flame_style"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/favorite_off" />
+                        android:src="@drawable/favorite_off"
+                        android:tint="#dd888888"
+                        android:visibility="visible" />
 
                     <ImageButton
                         android:id="@+id/moveFavoriteList"
@@ -221,10 +303,10 @@
                         android:layout_height="45dp"
                         android:layout_alignStart="@+id/sendImageView"
                         android:layout_alignTop="@+id/productImage"
-                        android:layout_marginTop="15px"
+                        android:layout_marginTop="25px"
                         android:background="@drawable/flame_style_background_white"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/favorite_on" />
+                        android:src="@drawable/list_icon"
+                        android:tint="#dd888888" />
 
                     <ImageButton
                         android:id="@+id/linkToAmazon"
@@ -234,7 +316,6 @@
                         android:layout_alignParentStart="true"
                         android:layout_marginTop="25px"
                         android:background="@drawable/flame_style"
-                        android:scaleType="fitXY"
                         android:src="@drawable/amazon_icon" />
 
                     <ToggleButton
@@ -246,7 +327,6 @@
                         android:layout_marginTop="25px"
                         android:background="@drawable/fix_button"
                         android:checked="false"
-                        android:scaleType="fitXY"
                         android:src="@drawable/ping"
                         android:textOff=""
                         android:textOn="" />
@@ -294,11 +374,10 @@
         android:id="@+id/productImage"
         android:layout_width="50dp"
         android:layout_height="60dp"
-        android:layout_marginEnd="31dp"
-        android:background="@color/cardview_light_background"
-        app:srcCompat="@color/cardview_light_background"
-        android:layout_marginTop="11dp"
+        android:layout_alignParentEnd="true"
         android:layout_below="@+id/sendImageProgress"
-        android:layout_alignParentEnd="true" />
+        android:layout_marginEnd="31dp"
+        android:layout_marginTop="11dp"
+        />
 
 </RelativeLayout>

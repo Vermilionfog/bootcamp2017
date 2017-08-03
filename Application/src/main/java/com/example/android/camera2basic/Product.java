@@ -15,6 +15,8 @@ import java.io.StringReader;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+import static android.R.attr.id;
+
 /**
  * Created by Yoshiki on 2017/07/15.
  */
@@ -50,7 +52,7 @@ public class Product {
     {
         System.out.println("Product");
         reviews = new Review[3];
-        getProductForXML(_amazon_xml);
+        getProductForXML(_amazon_xml, false);
         this.activity = activity;
         setStaticVar();
     }
@@ -59,6 +61,22 @@ public class Product {
     {
         name = "";
         price = 0;
+        reviews = new Review[3];
+        reviews[0] = new Review("","");
+        reviews[1] = new Review("","");
+        reviews[2] = new Review("","");
+        rating = 0f;
+        imageURL = "http://shironekochannel.com/wp-content/uploads/2016/08/no-error-sign-md.png";
+        amazonURL = "";
+        this.activity = activity;
+
+        setStaticVar();
+    }
+
+    public Product()
+    {
+        name = "TEST";
+        price = 1000;
         reviews = new Review[3];
         reviews[0] = new Review("","");
         reviews[1] = new Review("","");
@@ -101,9 +119,9 @@ public class Product {
 
     }
 
-    public void getProductForXML(String amazon_xml)
+    public void getProductForXML(String amazon_xml, Boolean flag)
     {
-        System.out.println(amazon_xml);
+        System.out.println("GET PRODUCT FOR XML");
         try {
             // 取得できているかを確認
             if (amazon_xml.length() > 0) {
@@ -135,7 +153,10 @@ public class Product {
                         // iFrameUrl = レビューや評価点数が書かれたHTMLのURLを取得
                         iFrameUrl = nextIFrameURL;
                         // iFrameHTMLにレビューや評価点数が書かれたHTMLを格納する。
-                        getHTML(iFrameUrl);
+
+                        System.out.println("BEFORE GET HTML");
+                        if (flag==true)
+                            getHTML(iFrameUrl);
                         // GetHTMLの中でsetDataByHtml()を呼び出して評価やレビューを取得している
                     }
                 }
@@ -146,7 +167,7 @@ public class Product {
                     imageURL ="http://shironekochannel.com/wp-content/uploads/2016/08/no-error-sign-md.png";
                     amazonURL = "";
                     rating = 0f;
-                    reviews[0] = new Review("文字が出来るだけ中央に来るようにしてください","");
+                    reviews[0] = new Review("文字が画面上部に来るようにしてください。","");
                     reviews[1] = new Review("","");
                     reviews[2] = new Review("","");
                 }
@@ -195,8 +216,9 @@ public class Product {
     }
 
     // iFrameURLに対応したHTMLファイルを取得し、このクラスのiFrameHTMLに格納する。
-    public synchronized void getHTML(String iFrameURL)
+    public void getHTML(String iFrameURL)
     {
+        System.out.println("PRODUCT GETHTML");
         GetHTML task = new GetHTML(this);
         task.execute(iFrameURL);
 
@@ -283,6 +305,23 @@ public class Product {
             reviews[2] = new Review("", "");
         }
     }
+
+    public int getID()
+    {
+        return id;
+    }
+
+    public String getName()
+    {
+        return name;
+    }
+
+    public Integer getPrice()
+    {
+        return price;
+    }
+
+
 
 
 }

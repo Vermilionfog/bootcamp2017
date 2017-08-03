@@ -72,7 +72,7 @@ public class Core_API extends AsyncTask<String, Void, String> {
     protected void onPostExecute(String result) {
         System.out.println("Core_API onPostExecute : " + result);
         mainActivity.setAPIResult(result);
-        mainActivity.displayReload();
+        mainActivity.displayReload(true);
         end = System.currentTimeMillis();
         System.out.println("Core_API " + (end-start) + "ms");
     }
@@ -85,14 +85,13 @@ public class Core_API extends AsyncTask<String, Void, String> {
 
             URL obj = new URL(url);
             HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-
             // add request header
             con.setRequestMethod("POST");
             con.setRequestProperty("User-Agent", USER_AGENT);
             con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
             con.setRequestProperty("Accept-Language", "ja");
             con.setRequestProperty("Content-Type", "application/json");
-
+            System.out.println("A3");
             String json = Build_JSON_for_Google(img_base64);
 
             con.setDoOutput(true);
@@ -101,10 +100,14 @@ public class Core_API extends AsyncTask<String, Void, String> {
             DOS.flush();
             DOS.close();
 
+            System.out.println("A4");
 
-            int responseCode = con.getResponseCode();
-            System.out.println("\nSending 'POST' request to URL : " + url);
-            System.out.println("Response Code : " + responseCode);
+//            System.out.println("GET RESPONSE CODE");
+//            int responseCode = con.getResponseCode();
+//            System.out.println("GET RESPONSE CODE");
+//
+//            System.out.println("\nSending 'POST' request to URL : " + url);
+//            System.out.println("Response Code : " + responseCode);
             System.out.println("1");
             InputStreamReader inputStreamReader = new InputStreamReader(con.getInputStream());
             System.out.println("2");
@@ -183,6 +186,7 @@ public class Core_API extends AsyncTask<String, Void, String> {
     //==========Make Amazon Request======================================
     public static String AmazonAPI_Req(String Keywords){
         //ここにアクセスキーやシークレットキーを入力するコードを追加して利用する。
+        TreeMap<String,String> kwargs = new TreeMap<String,String>();
 
         //add Timestamp
 
@@ -210,7 +214,7 @@ public class Core_API extends AsyncTask<String, Void, String> {
     //==========================Sign=====================================
     public static String Calc_HMACSHA256(String Plane_text){
         String Signature = "";
-        String secret = "/zy+jw8dxI5outtmbc5c+kRlz8lt2yQIqt14wQGu";
+
         String algo = "HmacSHA256";
         try {
             SecretKeySpec sk = new SecretKeySpec(secret.getBytes(), algo);
@@ -262,7 +266,7 @@ public class Core_API extends AsyncTask<String, Void, String> {
         String[] word = total_txt.split("\n");
         Integer i = 0;
         String result = "";
-        while(i < word.length && i<3)
+        while(i < word.length && i<2)
         {
 //            result += (word[i] + "\n");
             result += (word[i] + " || ");

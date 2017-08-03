@@ -50,8 +50,17 @@ public class GetBitmap extends AsyncTask<String, Void, Bitmap> {
      */
     @Override
     protected void onPostExecute(Bitmap param) {
-        ImageView productImage = (ImageView) cameraActivity.findViewById(R.id.productImage);
-        productImage.setImageBitmap(param);
+        if(param==null)
+        {
+
+            ImageView productImage = (ImageView) cameraActivity.findViewById(R.id.productImage);
+            productImage.setImageResource(R.drawable.no_error_sign_md);
+        }
+        else
+        {
+            ImageView productImage = (ImageView) cameraActivity.findViewById(R.id.productImage);
+            productImage.setImageBitmap(param);
+        }
         return;
     }
 }
